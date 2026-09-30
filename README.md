@@ -1,308 +1,74 @@
-# AI Engineering Company Project — Student Template
+Company Briefing: 
+TrackFlow is a last-mile delivery and warehouse management company founded in 2009 in Los Angeles, United States. It operates in two markets — United States and Spain — with warehouses in Los Angeles and Zaragoza. The company employs approximately 130 people and generates around 9 million euros in annual revenue.
+TrackFlow exists because e-commerce brands are good at making and selling products, but not at getting those products to customers' doors. TrackFlow does that for them: it stores their inventory, picks and packs orders, ships them out through a network of carriers, and handles returns when things come back. For the brands that work with TrackFlow, the entire logistics operation — from the moment an order is placed to the moment it is delivered or returned — is TrackFlow's problem to solve.
+How the company is organised
 
-[![4Geeks Academy](https://img.shields.io/badge/4Geeks-Academy-blue)](https://4geeksacademy.com)
-[![AI Engineering](https://img.shields.io/badge/track-AI%20Engineering-green)](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia)
+TrackFlow is led by Thomas Harry, the founder and CEO, based in Los Angeles. The company has a technology office in Zaragoza, Spain, where CTO Andrés Kim and most of the tech team are based. Operations, commercial, and customer-facing teams are distributed between the two countries.
+The company is organised around the following areas:
+Warehouse Operations is where the physical work of logistics happens. Ana Whitfield oversees the two warehouses — one in Los Angeles, one in Zaragoza — and the roughly 70 operatives who run them. Every day, hundreds of orders arrive, get picked from shelves, packed into boxes, and handed off to carriers. The two warehouses currently run on different systems and have no shared view of inventory.
+Last Mile and Carrier Management handles the relationship with the 8 carriers TrackFlow works with across the two countries — among them UPS, FedEx, MRW, and SEUR. Carlos Vega coordinates which carrier gets which shipment, tracks deliveries, and manages the incidents that inevitably occur: lost parcels, failed deliveries, wrong addresses. Right now, most of this is done manually, carrier by carrier.
+Reverse Logistics manages what happens when a product comes back. Sofía Ramos leads this team of five. Returns represent between 18% and 25% of total volume depending on the client and country, and every return involves a chain of decisions — approve or reject, collect or not, recondition or dispose — that currently all pass through human review.
+Customer Experience is the frontline between TrackFlow and the people it serves. Valentina Cruz manages 15 agents in Los Angeles and Zaragoza who handle queries from both the brands (who want to know how their operations are performing) and the end consumers (who want to know where their parcel is). The vast majority of queries are repetitive, and right now every single one is answered by a human.
+Commercial and Client Relations manages TrackFlow's portfolio of brand clients. Miguel Torres leads account managers and business development people who are responsible for retaining existing clients and winning new ones. Client contracts run annually, and renewals are won or lost based on whether clients feel their logistics operation is running well.
+Technology is the team building and maintaining everything. Andrés Kim leads a team of developers, data engineers, and systems people from Zaragoza. The current architecture is a patchwork: two different warehouse systems, an ERP from the early 2010s, and integrations between them that were built quickly and never properly documented. When something breaks, the team finds out through a WhatsApp message from someone in operations.
+Executive Leadership sits with Thomas, who manages the business from Los Angeles with a weekly consolidated report that each director prepares manually — a process that consumes hours every Sunday evening and still delivers data that is already a day or two old.
+Where the company stands today
 
-_Base template for transversal projects in the AI Engineering Career Program — 4Geeks Academy._
+TrackFlow has good clients, a skilled operations team, and a clear value proposition. What it lacks is the infrastructure to run a two-country logistics business at scale. The two warehouses cannot see each other's inventory. Carrier performance data does not exist in any structured form. Returns are approved or rejected one by one. Customer queries are answered by agents consulting a Word document on Google Drive. The CEO makes decisions based on a report assembled by hand.
+The consequence is that TrackFlow is slower, more error-prone, and less profitable than it needs to be — and the gap is growing as competitors invest in automation.
+Daniel has created an internal unit called TrackFlow Tech with a clear mandate: build the systems, integrations, and intelligent automations that allow TrackFlow to operate as the modern logistics company it needs to become.
+You are part of that unit.
 
-_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
----
+The Departments and Their Problems
 
-## Purpose
+🚚 Warehouse Operations
 
-This repository is the **starter template** for transversal projects. You will work on real company scenarios (Brasaland, TrackFlow, Nexova), building deliverables that map to course milestones (Web, Programming, Backend, Telemetry, RAG, Agents, Workflows, Real-time).
+Manager: Ana Whitfield (~70 operatives + 2 warehouse managers)
+Los Angeles and Zaragoza each use a different warehouse management system — one is commercial software, the other is an advanced spreadsheet. Real-time inventory visibility doesn't exist at a global level. Inbound orders arrive by email in different formats and are manually transcribed. Picking is done with printed paper lists. Inventory discrepancies are frequent and detected late.
+What they need: A unified inventory API returning real-time stock for any SKU in either warehouse, an order ingestion pipeline that parses emails automatically, a warehouse operations dashboard, and low-stock alerts that notify clients and the procurement team.
 
-- Create a template from this repository.
-- Replace the placeholder `CONTEXT.md` with your assigned company context.
-- Use `skills/` and the directory-level `README.md` files as working guidance.
+📦 Last Mile and Carrier Management
 
----
+Manager: Carlos Vega (6 logistics coordinators)
+TrackFlow works with 8 carriers across both countries (UPS, FedEx, DHL in the United States; MRW, SEUR, DHL in Spain, plus two local carriers). Carrier assignment is manual. Package tracking requires checking multiple carrier portals individually. There is no historical performance data: no on-time delivery rate, no incidents per route, no cost per kg.
+What they need: A carrier selection engine that recommends the optimal carrier given destination, weight, and urgency; a unified tracking endpoint aggregating status from any carrier; a public tracking portal for recipients; and a carrier performance dashboard.
 
-## How to start
+🔄 Reverse Logistics
 
-1. **Use this repository as a template** and create your own project repo.
-2. **Clone** your repository (or open it in Codespaces).
-3. **Replace** `CONTEXT.md` with the full context for your assigned company.
-4. **Read this folder guide** and open the `README.md` of the folder you are working in.
-5. **Start implementing** in the right folder — do not dump everything in the root.
-6. **Document** what you add: each new app, service, agent, or pipeline gets a subfolder + README.
+Manager: Sofía Ramos (5-person team)
+Returns represent 18–25% of volume depending on client and country. Every return goes through manual review — there are no automatic approval criteria. Product inspection after return is subjective and inconsistent. There is no visibility into which products are returned most and why.
+What they need: An automatic returns approval engine with configurable per-client rules, an automated collection flow (approval → label → carrier schedule), an AI-assisted inspection system where the operative photographs the product and AI classifies its condition, and a returns dashboard with pattern analysis.
 
----
+📞 Customer Experience
 
-## How to think about this monorepo
+Manager: Valentina Cruz (15 agents in Los Angeles and Zaragoza)
+TrackFlow serves two customer types: brands (B2B) and end consumers (B2C). The 15 agents handle both through email, WhatsApp, and phone with no unified ticketing system. 80% of queries could be answered automatically. There is no knowledge base. Coverage outside office hours is zero.
+What they need: A first-line CX agent resolving tracking queries and return status automatically, a semantic knowledge base indexed for RAG, a unified ticketing system, a real-time CX dashboard, and sentiment analysis to detect frustrated customers before escalation. Multilingual support (Spanish + English) is optional but highly recommended, starting from one base language.
 
-You are building **one company** across many milestones and projects. Each top-level folder has a **single responsibility** — like a real engineering team repo.
+🤝 Commercial and Client Relations
 
-| Layer               | Folders                           | What lives here                                                  |
-| ------------------- | --------------------------------- | ---------------------------------------------------------------- |
-| **Company context** | `CONTEXT.md`                      | Domain facts, field names, constraints for your assigned company |
-| **User-facing**     | `uis/`, `services/`               | Frontends and backends users (or operators) interact with        |
-| **Data**            | `data/`                           | Raw files, pipelines, processed datasets, evaluation sets        |
-| **AI**              | `agents/`, `skills/`, `mcps/`     | Agents, reusable agent capabilities, MCP tool servers            |
-| **Automation**      | `workflows/`                      | n8n flows and cross-system orchestration                         |
-| **Reuse**           | `packages/`, `shared/`            | Shared types, SDKs, schemas, templates                           |
-| **Operations**      | `infra/`, `scripts/`, `internal/` | Docker, deploy configs, one-off scripts, internal CLIs           |
-| **Documentation**   | `docs/`                           | Architecture, decisions, conventions for the whole repo          |
+Manager: Miguel Torres (4 account managers + 4 business development)
+Account managers track their accounts in personal spreadsheets and email threads — there is no CRM. Client reporting is manual: each month an account manager compiles data from different systems to send each client a PDF. There is no visibility into which clients are at risk of not renewing.
+What they need: A CRM integration with unified client profiles, automated client PDF reports generated by an agent, a client health dashboard with renewal risk scores, 90 and 30-day renewal alerts, and a commercial agent that suggests relevant services to prospects.
 
-**Rule of thumb:** if it has a UI → `uis/`. If it exposes an API or runs in the background → `services/`. If it moves or transforms data → `data/`. If an AI model does the work → `agents/` (+ `skills/` or `mcps/` as needed).
+💻 Technology
 
----
+CTO: Andrés Kim (7-person team in Zaragoza)
+TrackFlow's tech architecture is the result of years of unplanned growth: two different WMS systems, a legacy ERP from the early 2010s, undocumented point-to-point Python scripts, and databases in two different cloud providers. There is no centralised telemetry. When an endpoint fails in Los Angeles, the Zaragoza team finds out via WhatsApp. Deployment of a new feature takes one to two weeks.
+What they need: Centralised telemetry and logging from both countries, a data pipeline feeding all company dashboards, real-time monitoring with automatic alerts, a technical documentation agent, and automated ops tasks (backups, health checks, incident notifications).
 
-## Current status of the template
+📊 Executive Direction
 
-> 💡 This repository currently provides a **base folder structure and documentation skeleton** only. It does not include runnable apps or global scripts yet.
->
-> - `CONTEXT.md` is a placeholder and must be replaced with your assigned company context.
-> - There is no root `AGENTS.md` yet.
-> - Shared package metadata exists in `packages/shared/package.json` (`@repo/shared-types`), but no workspace runner is configured at root.
+CEO: Daniel Espinoza
+Daniel receives a consolidated report every Monday that his directors prepare on Sunday evening — 3 to 4 hours of work per director. By 10am Monday, some data is already two days old. There is no unified view of the business by country. Strategic decisions are made with partial data.
+What he needs: A global executive dashboard with real-time KPIs from both operations (shipment volume, on-time delivery, costs, returns, CSAT), an automatically generated weekly report at 7am Monday, country comparison views, threshold alerts, and a natural-language AI assistant.
+--
+Why Choose TrackFlow?
 
----
-
-## Folder guide — what goes where
-
-Read the linked `README.md` inside each folder before you start coding there.
-
-### Root files
-
-| Path                         | Purpose                                                                   | What you do here                                                                                              |
-| ---------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [`CONTEXT.md`](./CONTEXT.md) | Single source of truth for your company (Brasaland, TrackFlow, or Nexova) | **First step:** copy your assigned company briefing here so every app, agent, and prompt uses the same domain |
-| `docker-compose.yml`         | Local dev orchestration for the whole stack                               | Keep at repo root — wires `services/`, databases, and other containers from one place                         |
-| `README.md` / `README.es.md` | This guide                                                                | Orientation — you are here                                                                                    |
-
-### `uis/` — user interfaces
-
-**Purpose:** All frontend applications — anything a human sees and clicks.
-
-**Put here:**
-
-- Public website (`website/`)
-- Internal admin / backoffice (`backoffice/`)
-- Customer portals, loyalty apps, Streamlit/Gradio tools, dashboards with a UI
-
-**Examples:** corporate landing page, operations backoffice, loyalty portal, telemetry dashboard UI
-
-→ See [`uis/README.md`](./uis/README.md)
-
-### `services/` — centralized company API (FastAPI)
-
-**Purpose:** One **centralized FastAPI backend** for the whole company — a single entry point that keeps complexity low as the project grows.
-
-**Put here:**
-
-- One main FastAPI app (e.g. `api/`) with routers/modules per domain (locations, menus, sales, telemetry, etc.)
-- Background workers only when they truly need to run separately from the API
-
-**Recommendation:** avoid splitting into many microservices early. Add endpoints to the same FastAPI app; extract a worker only when necessary.
-
-**Examples:** `/locations`, `/menus`, `/sales/reports`, webhook handlers, scheduled jobs
-
-→ See [`services/README.md`](./services/README.md)
-
-### `data/` — datasets, pipelines, and evaluation
-
-**Purpose:** Everything data-related, from raw files to production-ready tables.
-
-| Subfolder                                       | Purpose                      | What you do here                                                          |
-| ----------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------- |
-| [`data/raw/`](./data/raw/README.md)             | Untouched source data        | Store dumps, exports, sample CSVs/JSON — document origin and PII rules    |
-| [`data/pipelines/`](./data/pipelines/README.md) | ETL/ELT jobs                 | Write ingestion, cleaning, and transformation scripts                     |
-| [`data/process/`](./data/process/README.md)     | Clean / intermediate outputs | Save artifacts produced by pipelines (features, aggregates, clean tables) |
-| [`data/eval/`](./data/eval/README.md)           | Quality measurement          | Golden sets, RAG/agent eval datasets, experiment metrics                  |
-
-**Flow:** `raw` → `pipelines` → `process` → consumed by `services/`, `uis/`, or `agents/`. Use `eval` to prove quality.
-
-### `agents/` — AI agents
-
-**Purpose:** Autonomous or semi-autonomous AI assistants for the company.
-
-**Put here:**
-
-- One subfolder per agent (e.g. `support-agent/`, `onboarding-agent/`)
-- Agent config, prompts, tools wiring, tests
-- Start from [`agents/_template/`](./agents/_template/README.md) when creating a new agent
-
-**Examples:** customer support bot, employee onboarding copilot, training assistant
-
-→ See [`agents/README.md`](./agents/README.md)
-
-### `skills/` — reusable agent capabilities
-
-**Purpose:** Packaged instructions + scripts that agents (or you in Cursor) reuse across the repo.
-
-**Put here:**
-
-- Skills for data analysis, code review, scraping, research, etc.
-- Each skill = a folder with `SKILL.md`, optional scripts and resources
-
-**Example included:** `skills/data-analysis/` (pandas cleaning script + metrics reference)
-
-→ See [`skills/README.md`](./skills/README.md)
-
-### `mcps/` — Model Context Protocol servers
-
-**Purpose:** Bridge AI models to your systems — databases, APIs, GitHub, custom tools.
-
-**Put here:**
-
-- One subfolder per MCP server (e.g. `database-mcp/`, `github-mcp/`)
-- Tool definitions, resources, and server config
-
-**When to use:** when an agent needs live access to data or actions your codebase alone cannot provide
-
-→ See [`mcps/README.md`](./mcps/README.md)
-
-### `workflows/` — automation and orchestration
-
-**Purpose:** Connect systems without writing full apps — scheduled jobs, webhooks, notifications.
-
-**Put here:**
-
-- n8n workflow exports, Make/Zapier configs, or orchestration docs
-- Flows that link `services/`, `data/pipelines/`, and `agents/`
-
-**Examples:** new-order → Slack alert, nightly ETL trigger, lead → CRM sync
-
-→ See [`workflows/README.md`](./workflows/README.md)
-
-### `packages/` — shared libraries
-
-**Purpose:** Versionable code reused by multiple apps, agents, or pipelines.
-
-**Put here:**
-
-- Shared TypeScript types (`packages/shared/` → `@repo/shared-types`)
-- UI component libraries, API clients, analytics SDKs
-
-**Rule:** if `uis/` and `services/` both need the same interface → extract it here
-
-→ See [`packages/README.md`](./packages/README.md)
-
-### `shared/` — loose shared assets
-
-**Purpose:** Resources that are not a full package — schemas, templates, static assets, short docs.
-
-**Put here:**
-
-- JSON schemas, email templates, OpenAPI specs, design tokens
-- Anything reused but too small or non-code for `packages/`
-
-→ See [`shared/README.md`](./shared/README.md)
-
-### `docs/` — cross-cutting documentation
-
-**Purpose:** Architecture and decisions that span the whole company project.
-
-**Put here:**
-
-- System architecture diagrams, ADRs, security/observability guides
-- Conventions not tied to one app or agent
-
-→ See [`docs/README.md`](./docs/README.md)
-
-### `infra/` — infrastructure and deployment
-
-**Purpose:** How the company project runs in Docker, cloud, or CI.
-
-**Put here:**
-
-- Dockerfiles, Terraform, K8s manifests, Nginx configs, CI/CD pipelines
-
-**Keep at repo root:** `docker-compose.yml` — orchestrates local dev for `services/`, databases, and other containers from one place.
-
-→ See [`infra/README.md`](./infra/README.md)
-
-### `scripts/` — helper scripts
-
-**Purpose:** Small, repeatable automation — not full apps.
-
-**Put here:**
-
-- Setup scripts, seed data generators, lint wrappers, one-off migrations
-- Document each script: what it does, args, and how to run it
-
-**Difference from `internal/`:** scripts are usually single files; `internal/` tools are structured projects with their own deps and tests.
-
-→ See [`scripts/README.md`](./scripts/README.md)
-
-### `internal/` — internal developer tools
-
-**Purpose:** Robust utilities for the engineering team.
-
-**Put here:**
-
-- CLIs, packaged migration tools, prompt evaluators
-- Tools with their own `package.json`, tests, and install steps
-
-→ See [`internal/README.md`](./internal/README.md)
-
----
-
-## Where should I put this?
-
-Quick decision guide:
-
-```text
-Does it have buttons and screens?          → uis/
-Does it run on a server / API / queue?     → services/
-Is it raw or transformed data?             → data/raw/ or data/process/
-Does it move data between systems?         → data/pipelines/
-Do you measure AI/pipeline quality?        → data/eval/
-Is it an AI assistant with a goal?         → agents/
-Is it a reusable AI capability/instruction?→ skills/
-Does AI need to call external tools/APIs?  → mcps/
-Is it n8n / scheduled automation?          → workflows/
-Will 2+ folders import the same code?      → packages/
-Is it a schema/template/asset, not a lib?  → shared/
-Is it architecture or team-wide docs?      → docs/
-Is it docker-compose for local dev?        → repo root
-Is it Docker / deploy / cloud config?      → infra/
-Is it a one-off script?                    → scripts/
-Is it a CLI tool with its own package?     → internal/
-```
-
----
-
-## Repository structure (tree)
-
-```text
-ai-engineering-company-project-monorepo/
-├── README.md / README.es.md   # This guide
-├── CONTEXT.md                 # ← Replace with your company briefing
-├── docker-compose.yml         # ← Local dev orchestration (repo root)
-├── uis/                       # Frontends (website, backoffice, dashboards)
-├── services/                  # Centralized FastAPI company API
-├── data/
-│   ├── raw/                   # Source datasets
-│   ├── pipelines/             # ETL/ELT jobs
-│   ├── process/               # Clean / intermediate outputs
-│   └── eval/                  # Evaluation sets and metrics
-├── agents/                    # AI agents (+ _template/ starter)
-├── skills/                    # Reusable agent skills
-├── mcps/                      # MCP servers for tool access
-├── workflows/                 # n8n and automation flows
-├── packages/                  # Shared libraries (@repo/shared-types, …)
-├── shared/                    # Schemas, templates, loose assets
-├── docs/                      # Architecture and cross-cutting docs
-├── infra/                     # Docker, Terraform, deployment
-├── scripts/                   # Helper scripts
-└── internal/                  # Internal CLIs and dev tools
-```
-
----
-
-## Links
-
-- [4Geeks Academy — AI Engineering](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia)
-- [How to start a coding project](https://4geeks.com/lesson/how-to-start-a-project)
-
----
-
-## Contributors
-
-This template was built as part of the 4Geeks Academy AI Engineering Career Program by [@marcogonzalo](https://www.linkedin.com/in/marcogonzalo) and [@alesanchezr](https://x.com/alesanchezr) and many other contributors. Find out more about our [AI Engineering Course](https://4geeksacademy.com/en/career-programs/ai-engineering), and [other courses](https://4geeksacademy.com/en/program-comparison).
-
-You can find other templates and resources like this at the [4Geeks Academy GitHub page](https://github.com/4geeksacademy).
-
-_This template is maintained by 4Geeks Academy for the AI Engineering track. For exclusive use in the programme._
+Choose TrackFlow if you are drawn to:
+* Logistics and physical operations — every line of code you write is connected to a parcel moving from a warehouse shelf to someone's front door.
+* Cross-border complexity — two countries, two languages, two regulatory environments, and two separate tech stacks that need to be unified.
+* Data engineering at its most concrete — carrier performance metrics, SKU-level inventory, shipment event streams, and returns classification are all structured, measurable, and visually compelling in dashboards.
+* Systems that run 24/7 — TrackFlow's customers don't stop expecting their parcels after 6pm. The CX agent, tracking portal, and operations dashboard all need to be always-on.
+The AI challenges at TrackFlow include image-based product condition classification for returns, semantic search over logistics policies in two languages, intelligent carrier selection with explainable recommendations, and a real-time parcel tracking aggregator pulling data from 8 different carrier APIs. If you want to build systems that handle physical-world complexity at scale, TrackFlow is your company.
