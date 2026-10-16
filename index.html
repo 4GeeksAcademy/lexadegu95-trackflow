@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth motion-reduce:scroll-auto">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,533 +54,80 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,wght@0,500;0,600;1,500&amp;display=swap" rel="stylesheet">
-    <script>tailwind = { config: { corePlugins: { preflight: false } } };</script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: "601px",
+                    md: "761px",
+                    lg: "901px",
+                    "2xl": "1600px"
+                },
+                extend: {
+                    fontFamily: {
+                        sans: ["DM Sans", "sans-serif"],
+                        display: ["Fraunces", "Georgia", "serif"]
+                    },
+                    keyframes: {
+                        welcome: {
+                            from: { opacity: "0", transform: "translateY(12px)" },
+                            to: { opacity: "1", transform: "translateY(0)" }
+                        }
+                    },
+                    animation: {
+                        welcome: "welcome 0.6s ease-out both"
+                    }
+                }
+            }
+        };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        /* RESET */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            line-height: 1.6;
-            color: #172033;
-            background-color: #ffffff;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* NAVIGATION */
-        .navbar {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            gap: 18px;
-            padding: 20px 5%;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e8edf3;
-        }
-
-        .logo {
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: #142d4e;
-        }
-
-        .logo span {
-            color: #0d9488;
-        }
-
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: #0d9488;
-        }
-
-        .nav-links .contact-link {
-            background-color: #0d9488;
-            color: #ffffff;
-            padding: 8px 12px;
-            border-radius: 8px;
-        }
-
-        .nav-links .contact-link:hover {
-            background-color: #0f766e;
-            color: #ffffff;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 35px;
-            padding: 55px 5%;
-            background: linear-gradient(135deg, #f0fdfa, #f8fafc);
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .eyebrow {
-            display: inline-block;
-            color: #0d9488;
-            background-color: #ccfbf1;
-            padding: 7px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 22px;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            line-height: 1.1;
-            color: #142d4e;
-            margin-bottom: 24px;
-        }
-
-        .hero h1 span {
-            color: #0d9488;
-        }
-
-        .hero p {
-            color: #64748b;
-            font-size: 1.1rem;
-            margin-bottom: 32px;
-            max-width: 500px;
-        }
-
-        .primary-button {
-            display: inline-block;
-            background-color: #0d9488;
-            color: #ffffff;
-            padding: 14px 26px;
-            border-radius: 8px;
-            font-weight: 700;
-            transition: background-color 0.2s ease;
-        }
-
-        .primary-button:hover {
-            background-color: #0f766e;
-        }
-
-        /* GENERAL SECTIONS */
-        section:not(.hero) {
-            padding: 60px 5%;
-            scroll-margin-top: 20px;
-        }
-
-        .section-heading {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto 45px;
-        }
-
-        .section-heading h2 {
-            font-size: 2.3rem;
-            color: #142d4e;
-            margin-bottom: 14px;
-        }
-
-        .section-heading p {
-            color: #64748b;
-        }
-
-        /* SERVICES */
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        .service-card {
-            padding: 30px;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            transition: transform 0.2s ease,
-                        box-shadow 0.2s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(20, 45, 78, 0.08);
-        }
-
-        .service-icon {
-            font-size: 2rem;
-            margin-bottom: 18px;
-        }
-
-        .service-card h3 {
-            color: #142d4e;
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            color: #64748b;
-            font-size: 0.95rem;
-        }
-
-        /* COVERAGE */
-        .coverage {
-            background-color: #f8fafc;
-        }
-
-        .coverage-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .coverage-content h2 {
-            color: #142d4e;
-            font-size: 2.2rem;
-            margin-bottom: 16px;
-        }
-
-        .coverage-content p {
-            color: #64748b;
-            max-width: 520px;
-        }
-
-        .coverage-badge {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            min-width: 0;
-            width: 100%;
-        }
-
-        .coverage-badge span {
-            display: block;
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-        }
-
-        .coverage-badge strong {
-            color: #142d4e;
-        }
-
-        /* CONTACT */
-        .contact-content {
-            max-width: 650px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-content h2 {
-            font-size: 2.3rem;
-            color: #142d4e;
-            margin-bottom: 16px;
-        }
-
-        .contact-content p {
-            color: #64748b;
-            margin-bottom: 28px;
-        }
-
-        /* FOOTER */
-        footer {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            padding: 25px 5%;
-            background-color: #142d4e;
-            color: #cbd5e1;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        footer .logo {
-            color: #ffffff;
-        }
-
-        :root { --accent: #a3223d; --ink: #422a2c; --red: #a3223d; --gold: #e4bd68; --pink: #f9dce5; --muted: #705258; }
-        body { overflow-wrap: anywhere; }
-        a:focus-visible, button:focus-visible, input:focus-visible,
-        select:focus-visible, textarea:focus-visible {
-            outline: 3px solid #a3223d;
-            outline-offset: 4px;
-        }
-        .skip-link { position: absolute; top: -100px; left: 16px; z-index: 10; padding: 12px; background: white; }
-        .skip-link:focus { top: 12px; }
-        .logo span, .nav-links a:hover, .hero h1 span { color: var(--accent); }
-        .primary-button, .nav-links .contact-link { background: var(--accent); }
-        .primary-button { font: inherit; font-weight: 700; border: 0; cursor: pointer; text-align: center; }
-        .nav-links a { display: inline-flex; align-items: center; min-height: 44px; }
-        .eyebrow { color: #08665e; border-radius: 4px; }
-        .hero { position: relative; isolation: isolate; min-height: 550px; color: white; background: #142d4e; }
-        .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8, 26, 36, .92), rgba(8, 26, 36, .72) 55%, rgba(8, 26, 36, .25)); z-index: -1; }
-        .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-        .hero h1 { font-size: 4rem; color: white; }
-        .hero h1 span { color: #93eadc; }
-        .hero p { color: #f1f5f9; }
-        .hero .eyebrow { color: white; background: transparent; padding: 0; }
-        .hero-content { max-width: 720px; }
-        .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
-        .text-link { text-decoration: underline; text-underline-offset: 5px; }
-        .service-card { border-radius: 8px; }
-        .service-number { display: block; color: #526277; font-size: .85rem; margin-bottom: 18px; }
-        .coverage-badge { border-radius: 8px; }
-        .coverage-badge span { font-size: 1.4rem; font-weight: 700; color: #142d4e; }
-        .contact-content { max-width: 920px; text-align: left; }
-        .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-        label, legend { font-weight: 600; }
-        input, select, textarea { width: 100%; min-height: 48px; padding: 11px 12px; font: inherit; color: #172033; background: white; border: 1px solid #748295; border-radius: 4px; }
-        textarea { resize: vertical; }
-        fieldset { min-width: 0; border: 0; }
-        legend { margin-bottom: 12px; }
-        .full-width { grid-column: 1 / -1; }
-        .choices { display: flex; flex-wrap: wrap; gap: 12px 24px; }
-        .choice { display: flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 400; cursor: pointer; }
-        .choice input { width: 20px; height: 20px; min-height: 20px; flex-shrink: 0; accent-color: var(--accent); }
-        .contact-content .form-note { margin: 8px 0 0; font-size: .9rem; color: #475569; }
-        .submit-row { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .primary-button:disabled { cursor: wait; opacity: .7; }
-        body { color: var(--ink); background: #fff9fb; }
-        h1, h2, h3, .logo { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: 0; }
-        .navbar { padding-block: 18px; background: #fff9fb; border-bottom: 1px solid #dcb68a; }
-        .logo { font-size: 2rem; color: var(--ink); }
-        .logo span { color: var(--accent); }
-        .nav-links a { color: var(--ink); }
-        .nav-links a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 6px; }
-        .primary-button, .nav-links .contact-link {
-            background: var(--red);
-            color: #ffffff;
-            border: 1px solid var(--red);
-            border-radius: 6px;
-            box-shadow: 3px 3px 0 var(--gold);
-            transition: background-color .2s ease, box-shadow .2s ease;
-        }
-        .primary-button:hover, .nav-links .contact-link:hover {
-            color: #ffffff;
-            background: #82192f;
-            box-shadow: 1px 1px 0 var(--gold);
-            text-decoration: none;
-        }
-        .hero { min-height: 0; padding-block: 48px; background: var(--ink); }
-        .hero::before { background: rgba(58, 27, 35, .87); }
-        .hero h1 { font-size: 2.8rem; line-height: 1.08; }
-        .hero h1 span { color: #ffd6e3; font-style: italic; }
-        .hero p { color: #fff4f8; }
-        .hero .eyebrow {
-            color: var(--ink);
-            background: var(--pink);
-            padding: 8px 14px;
-            border: 1px solid var(--gold);
-            border-radius: 4px;
-            transform: none;
-            font-size: .65rem;
-        }
-        .hero-content { animation: welcome .6s ease-out both; }
-        .hero p { max-width: 570px; }
-        .coverage { background: var(--pink); border-block: 1px solid #dcb68a; }
-        .coverage-content h2, .section-heading h2, .contact-content h2 { color: var(--ink); font-size: 2rem; line-height: 1.15; }
-        .coverage-content p, .section-heading p, .service-card p, .contact-content p { color: var(--muted); }
-        .coverage-badge {
-            position: relative;
-            min-width: 0;
-            width: 100%;
-            background: #fff6df;
-            border: 1px solid #b38a43;
-            box-shadow: 5px 5px 0 #e9bfcc;
-            transform: none;
-        }
-        .coverage-badge::before {
-            content: '';
-            display: block;
-            width: 46px;
-            height: 9px;
-            background: var(--red);
-            border: 1px solid var(--red);
-            margin: 0 auto 20px;
-        }
-        .coverage-badge span, .coverage-badge strong { color: var(--ink); }
-        .coverage-badge span { font-family: 'Fraunces', Georgia, serif; font-size: 1.7rem; }
-        .service-card { border: 1px solid #d7a6b3; border-top: 4px solid var(--red); box-shadow: 0 6px 18px rgba(66, 42, 44, .06); background: #fce5ec; }
-        .service-card:nth-child(2) { background: #fff3d8; border-top-color: #a1762b; }
-        .service-card:nth-child(3) { background: #f4e9e5; border-top-color: #76514b; }
-        .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(66, 42, 44, .12); }
-        .service-card h3 { color: var(--ink); font-size: 1.5rem; line-height: 1.2; }
-        .service-number { color: var(--red); font-weight: 700; }
-        #contact { background: #fff0f5; border-top: 1px solid #dcb68a; }
-        .contact-content > p:first-of-type { margin-top: 18px; }
-        input, select, textarea { color: var(--ink); background: #fffafb; border: 1px solid #98727c; border-radius: 6px; }
-        input:hover, textarea:hover { border-color: var(--ink); }
-        input:focus, textarea:focus { background: #ffffff; }
-        .choice input { accent-color: var(--accent); }
-        .contact-content .form-note { color: var(--muted); }
-        .field-error {
-            color: #b42318;
-            background-color: #fef3f2;
-            border-left: 4px solid #b42318;
-            border-radius: 4px;
-            padding: 8px 12px;
-            margin-top: 6px;
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-        .field-error[hidden], .field-error:empty { display: none; }
-        .form-status {
-            padding: 12px 16px;
-            margin: 16px 0;
-            border-radius: 6px;
-            font-weight: 600;
-        }
-        .form-status.error {
-            color: #912018;
-            background-color: #fef3f2;
-            border: 1px solid #fecdca;
-        }
-        .form-status.success {
-            color: #166534;
-            background-color: #f0fdf4;
-            border: 1px solid #86efac;
-        }
-        .form-status:empty { display: none; }
-        input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
-            border: 2px solid #b42318;
-            outline-color: #b42318;
-        }
-        .success-message { margin-top: 32px; padding: 24px; background: var(--pink); border-left: 4px solid var(--red); border-radius: 6px; }
-        .success-message h3 { font-size: 1.6rem; margin-bottom: 16px; }
-        .success-message a { text-decoration: underline; text-underline-offset: 4px; }
-        .success-message p:last-child { margin-bottom: 0; }
-        .success-message:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
-        .lead-form[hidden], .success-message[hidden] { display: none; }
-        .volume-warning { background: #fff3d8; border-left: 4px solid #a1762b; padding: 16px; border-radius: 6px; }
-        .contact-content .volume-warning p { color: var(--ink); margin-bottom: 12px; }
-        .volume-warning[hidden] { display: none; }
-        footer { background: var(--ink); color: #f9dce5; border-top: 3px solid var(--gold); }
-        footer .logo { color: #f9dce5; }
-        footer .logo span { color: var(--gold); }
-        .detail-list { padding-left: 20px; color: var(--muted); }
-        .detail-list li + li { margin-top: 10px; }
-        .coverage-grid { display: grid; grid-template-columns: 1fr; gap: 28px; max-width: 1000px; margin-inline: auto; }
-        .country { border-top: 2px solid var(--red); padding-top: 24px; }
-        .country h3 { font-size: 1.8rem; margin-bottom: 16px; }
-        .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
-        .benefit { border-top: 2px solid #b38a43; padding-top: 20px; }
-        .benefit h3 { font-size: 1.4rem; margin-bottom: 12px; }
-        .benefit p { color: var(--muted); }
-        .contact-details { display: flex; flex-wrap: wrap; gap: 16px 32px; font-style: normal; margin-block: 24px; }
-        .contact-details a, .social-link { text-decoration: underline; text-underline-offset: 4px; }
-        .contact-details a { display: inline-block; padding-block: 8px; }
-        .social-link { display: inline-flex; align-items: center; min-height: 44px; }
-        @keyframes welcome { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        @media (min-width: 601px) {
-            section:not(.hero) { padding: 85px 8%; }
-            .hero { min-height: 580px; padding-block: 68px; }
-            .hero h1 { font-size: 3.8rem; }
-            .hero::before { background: linear-gradient(90deg, rgba(58, 27, 35, .94), rgba(58, 27, 35, .83) 48%, rgba(58, 27, 35, .25)); }
-            .hero .eyebrow { transform: rotate(-2deg); font-size: .75rem; }
-            .services-grid, .coverage-grid, .benefits-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .coverage-grid { gap: 48px; }
-            .coverage-badge { min-width: 260px; width: auto; transform: rotate(2deg); }
-            .coverage-content h2, .section-heading h2, .contact-content h2 { font-size: 2.6rem; }
-            .hero-actions { align-items: center; flex-direction: row; }
-            footer { flex-direction: row; padding: 28px 8%; text-align: left; }
-        }
-        @media (min-width: 761px) {
-            .navbar { flex-direction: row; gap: 32px; padding-inline: 8%; }
-            .nav-links { flex-wrap: nowrap; gap: 32px; }
-            .nav-links a { font-size: .95rem; }
-            .nav-links .contact-link { padding: 10px 20px; }
-        }
-        @media (min-width: 901px) {
-            .hero { flex-direction: row; align-items: center; gap: 50px; }
-            .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .coverage-content { flex-direction: row; align-items: center; }
-            .benefits-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-        }
-        @media (min-width: 1600px) { .hero { min-height: 620px; } }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after { transition: none !important; }
-            .hero-content { animation: none; }
-            .service-card:hover { transform: none; }
-        }
-    </style>
 </head>
 
-<body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+<body class="break-words bg-[#fff9fb] font-sans leading-[1.6] text-[#422a2c]">
+    <a class="absolute left-4 top-[-100px] z-10 bg-white p-3 focus:top-3" href="#main-content">Skip to content</a>
 
     <!-- NAVIGATION BAR -->
     <header>
-        <nav class="navbar" aria-label="Main navigation">
-            <a href="#home" class="logo">Track<span>Flow</span></a>
+        <nav class="flex flex-col items-center justify-between gap-[18px] border-b border-[#dcb68a] bg-[#fff9fb] px-[5%] py-[18px] md:flex-row md:gap-8 md:px-[8%]" aria-label="Main navigation">
+            <a href="#home" class="font-display text-[2rem] font-medium text-[#422a2c]">Track<span class="text-[#a3223d]">Flow</span></a>
 
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#coverage">Coverage</a></li>
-                <li><a href="#contact" class="contact-link">Contact</a></li>
+            <ul class="flex flex-wrap items-center justify-center gap-4 list-none md:flex-nowrap md:gap-8">
+                <li><a class="inline-flex min-h-11 items-center text-[.9rem] font-semibold text-[#422a2c] transition-colors hover:text-[#a3223d] hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d] md:text-[.95rem]" href="#home">Home</a></li>
+                <li><a class="inline-flex min-h-11 items-center text-[.9rem] font-semibold text-[#422a2c] transition-colors hover:text-[#a3223d] hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d] md:text-[.95rem]" href="#services">Services</a></li>
+                <li><a class="inline-flex min-h-11 items-center text-[.9rem] font-semibold text-[#422a2c] transition-colors hover:text-[#a3223d] hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d] md:text-[.95rem]" href="#coverage">Coverage</a></li>
+                <li><a href="#contact" class="inline-flex min-h-11 items-center rounded-md border border-[#a3223d] bg-[#a3223d] px-3 py-2 text-[.9rem] font-semibold text-white shadow-[3px_3px_0_#e4bd68] transition-all hover:bg-[#82192f] hover:shadow-[1px_1px_0_#e4bd68] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d] md:px-5 md:text-[.95rem]">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="main-content">
         <!-- HERO SECTION -->
-        <section class="hero" id="home">
-            <img class="hero-image" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Warehouse aisles with organized inventory ready for fulfillment" width="1600" height="900" fetchpriority="high">
-            <div class="hero-content">
-                <span class="eyebrow">YOUR LOGISTICS PARTNER IN THE US &amp; SPAIN</span>
+        <section class="relative isolate flex min-h-0 flex-col items-start justify-between gap-[35px] bg-[#422a2c] px-[5%] py-12 text-white sm:min-h-[580px] sm:gap-[50px] sm:px-[8%] sm:py-[68px] lg:flex-row lg:items-center 2xl:min-h-[620px]" id="home">
+            <img class="absolute inset-0 -z-20 h-full w-full object-cover" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Warehouse aisles with organized inventory ready for fulfillment" width="1600" height="900" fetchpriority="high">
+            <div aria-hidden="true" class="absolute inset-0 -z-10 bg-[#3a1b23]/90 sm:bg-gradient-to-r sm:from-[#3a1b23]/95 sm:via-[#3a1b23]/80 sm:to-[#3a1b23]/25"></div>
+            <div class="relative z-0 max-w-[720px] animate-welcome motion-reduce:animate-none">
+                <span class="mb-[22px] inline-block rounded border border-[#e4bd68] bg-[#f9dce5] px-[14px] py-2 text-[.65rem] font-bold text-[#422a2c] sm:rotate-[-2deg] sm:text-[.75rem]">YOUR LOGISTICS PARTNER IN THE US &amp; SPAIN</span>
 
-                <h1>Logistics that scales <span>with your e-commerce</span></h1>
+                <h1 class="mb-6 font-display text-[2.8rem] font-medium leading-[1.08] text-white sm:text-[3.8rem] lg:text-[4.3rem]">Logistics that scales <span class="font-display italic text-[#ffd6e3]">with your e-commerce</span></h1>
 
-                <p>
+                <p class="mb-8 max-w-[570px] text-[1.1rem] text-[#fff4f8]">
                     Warehouse management, last-mile deliveries, and reverse logistics in the United States and Spain.
                     Over 15 years helping fashion, electronics, and cosmetics brands grow without worrying about operations.
                 </p>
 
-                <div class="hero-actions">
-                    <a href="#prospect-form" class="primary-button">Request information</a>
+                <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+                    <a href="#prospect-form" class="inline-flex min-h-12 items-center justify-center rounded-md border border-[#a3223d] bg-[#a3223d] px-[26px] py-[14px] font-bold text-white shadow-[3px_3px_0_#e4bd68] transition-all hover:bg-[#82192f] hover:shadow-[1px_1px_0_#e4bd68] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]">Request information</a>
                 </div>
             </div>
         </section>
 
-        <section class="coverage" id="about" aria-labelledby="about-title">
-            <div class="coverage-content">
+        <section class="scroll-mt-5 border-y border-[#dcb68a] bg-[#f9dce5] px-[5%] py-[60px] sm:px-[8%] sm:py-[85px]" id="about" aria-labelledby="about-title">
+            <div class="mx-auto flex max-w-[1000px] flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
                 <div>
-                    <h2 id="about-title">Who we are</h2>
-                    <p>
+                    <h2 class="mb-4 font-display text-[2rem] font-medium leading-[1.15] text-[#422a2c] sm:text-[2.6rem]" id="about-title">Who we are</h2>
+                    <p class="max-w-[520px] text-[#705258]">
                         TrackFlow is your e-commerce logistics partner in the United States and Spain.
                         For over 15 years, we have helped fashion, electronics, and cosmetics brands grow.
                         Our team of over 130 professionals manages storage, deliveries, and returns
@@ -588,49 +135,50 @@
                     </p>
                 </div>
 
-                <div class="coverage-badge">
-                    <span>United States &amp; Spain</span>
-                    <strong>Two countries. One logistics partner.</strong>
-                    <p>Warehousing, delivery and returns.</p>
+                <div class="relative w-full min-w-0 rotate-0 border border-[#b38a43] bg-[#fff6df] p-[30px] text-center shadow-[5px_5px_0_#e9bfcc] sm:w-auto sm:min-w-[260px] sm:rotate-2">
+                    <span aria-hidden="true" class="mx-auto mb-5 block h-[9px] w-[46px] border border-[#a3223d] bg-[#a3223d]"></span>
+                    <span class="mb-2 block font-display text-[1.7rem] font-bold text-[#422a2c]">United States &amp; Spain</span>
+                    <strong class="block text-[#422a2c]">Two countries. One logistics partner.</strong>
+                    <p class="text-[#705258]">Warehousing, delivery and returns.</p>
                 </div>
             </div>
         </section>
 
         <!-- SERVICES SECTION -->
-        <section id="services">
-            <div class="section-heading">
-                <h2>What we do</h2>
-                <p>
+        <section class="scroll-mt-5 px-[5%] py-[60px] sm:px-[8%] sm:py-[85px]" id="services">
+            <div class="mx-auto mb-[45px] max-w-[650px] text-center">
+                <h2 class="mb-[14px] font-display text-[2rem] font-medium leading-[1.15] text-[#422a2c] sm:text-[2.6rem]">What we do</h2>
+                <p class="text-[#705258]">
                     Three connected services for your e-commerce operations,
                     from receiving stock to handling a customer's return.
                 </p>
             </div>
 
-            <div class="services-grid">
-                <article class="service-card">
-                    <span class="service-number" aria-hidden="true">01 / STORE</span>
-                    <h3>Warehouse Management</h3>
-                    <ul class="detail-list">
+            <div class="grid grid-cols-1 gap-[25px] sm:grid-cols-2 lg:grid-cols-3">
+                <article class="rounded-lg border border-[#d7a6b3] border-t-4 border-t-[#a3223d] bg-[#fce5ec] p-[30px] shadow-[0_6px_18px_rgba(66,42,44,0.06)] transition-all hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(66,42,44,0.12)] motion-reduce:transition-none motion-reduce:hover:transform-none">
+                    <span class="mb-[18px] block text-[.85rem] font-bold text-[#a3223d]" aria-hidden="true">01 / STORE</span>
+                    <h3 class="mb-3 font-display text-2xl font-medium leading-tight text-[#422a2c]">Warehouse Management</h3>
+                    <ul class="list-disc space-y-2 pl-5 text-[#705258]">
                         <li>Storage, picking and packing</li>
                         <li>Real-time inventory</li>
                         <li>We operate warehouses in Los Angeles and Zaragoza</li>
                     </ul>
                 </article>
 
-                <article class="service-card">
-                    <span class="service-number" aria-hidden="true">02 / DELIVER</span>
-                    <h3>Last-Mile Deliveries</h3>
-                    <ul class="detail-list">
+                <article class="rounded-lg border border-[#d7a6b3] border-t-4 border-t-[#a1762b] bg-[#fff3d8] p-[30px] shadow-[0_6px_18px_rgba(66,42,44,0.06)] transition-all hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(66,42,44,0.12)] motion-reduce:transition-none motion-reduce:hover:transform-none">
+                    <span class="mb-[18px] block text-[.85rem] font-bold text-[#a3223d]" aria-hidden="true">02 / DELIVER</span>
+                    <h3 class="mb-3 font-display text-2xl font-medium leading-tight text-[#422a2c]">Last-Mile Deliveries</h3>
+                    <ul class="list-disc space-y-2 pl-5 text-[#705258]">
                         <li>Certified carrier network in both countries</li>
                         <li>Unified shipment tracking</li>
                         <li>Incident and returns management</li>
                     </ul>
                 </article>
 
-                <article class="service-card">
-                    <span class="service-number" aria-hidden="true">03 / RETURN</span>
-                    <h3>Reverse Logistics</h3>
-                    <ul class="detail-list">
+                <article class="rounded-lg border border-[#d7a6b3] border-t-4 border-t-[#76514b] bg-[#f4e9e5] p-[30px] shadow-[0_6px_18px_rgba(66,42,44,0.06)] transition-all hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(66,42,44,0.12)] motion-reduce:transition-none motion-reduce:hover:transform-none">
+                    <span class="mb-[18px] block text-[.85rem] font-bold text-[#a3223d]" aria-hidden="true">03 / RETURN</span>
+                    <h3 class="mb-3 font-display text-2xl font-medium leading-tight text-[#422a2c]">Reverse Logistics</h3>
+                    <ul class="list-disc space-y-2 pl-5 text-[#705258]">
                         <li>Complete returns management</li>
                         <li>Inspection and reconditioning</li>
                         <li>Integration with your sales platform</li>
@@ -639,23 +187,23 @@
             </div>
         </section>
 
-        <section class="coverage" id="coverage" aria-labelledby="coverage-title">
-            <div class="section-heading">
-                <h2 id="coverage-title">Our coverage</h2>
-                <p>Local infrastructure and a certified carrier network in both countries.</p>
+        <section class="scroll-mt-5 border-y border-[#dcb68a] bg-[#f9dce5] px-[5%] py-[60px] sm:px-[8%] sm:py-[85px]" id="coverage" aria-labelledby="coverage-title">
+            <div class="mx-auto mb-[45px] max-w-[650px] text-center">
+                <h2 class="mb-[14px] font-display text-[2rem] font-medium leading-[1.15] text-[#422a2c] sm:text-[2.6rem]" id="coverage-title">Our coverage</h2>
+                <p class="text-[#705258]">Local infrastructure and a certified carrier network in both countries.</p>
             </div>
-            <div class="coverage-grid">
-                <article class="country">
-                    <h3>United States</h3>
-                    <ul class="detail-list">
+            <div class="mx-auto grid max-w-[1000px] grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-12">
+                <article class="border-t-2 border-[#a3223d] pt-6">
+                    <h3 class="mb-4 font-display text-[1.8rem] font-medium text-[#422a2c]">United States</h3>
+                    <ul class="list-disc space-y-2 pl-5 text-[#705258]">
                         <li>Warehouse in Los Angeles</li>
                         <li>National coverage</li>
                         <li>Carriers: UPS, FedEx, DHL</li>
                     </ul>
                 </article>
-                <article class="country">
-                    <h3>Spain</h3>
-                    <ul class="detail-list">
+                <article class="border-t-2 border-[#a3223d] pt-6">
+                    <h3 class="mb-4 font-display text-[1.8rem] font-medium text-[#422a2c]">Spain</h3>
+                    <ul class="list-disc space-y-2 pl-5 text-[#705258]">
                         <li>Warehouse in Zaragoza</li>
                         <li>Peninsular and island coverage</li>
                         <li>Carriers: MRW, SEUR, DHL</li>
@@ -664,58 +212,58 @@
             </div>
         </section>
 
-        <section id="why-trackflow" aria-labelledby="benefits-title">
-            <div class="section-heading"><h2 id="benefits-title">Why TrackFlow</h2></div>
-            <div class="benefits-grid">
-                <article class="benefit"><h3>Binational operation</h3><p>The only operator with own infrastructure in the United States and Spain.</p></article>
-                <article class="benefit"><h3>+130 professionals</h3><p>Dedicated to your logistics.</p></article>
-                <article class="benefit"><h3>Own technology</h3><p>For total visibility of your inventory.</p></article>
-                <article class="benefit"><h3>E-commerce specialization</h3><p>In fashion, electronics, and cosmetics.</p></article>
+        <section class="scroll-mt-5 px-[5%] py-[60px] sm:px-[8%] sm:py-[85px]" id="why-trackflow" aria-labelledby="benefits-title">
+            <div class="mx-auto mb-[45px] max-w-[650px] text-center"><h2 class="mb-[14px] font-display text-[2rem] font-medium leading-[1.15] text-[#422a2c] sm:text-[2.6rem]" id="benefits-title">Why TrackFlow</h2></div>
+            <div class="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
+                <article class="border-t-2 border-[#b38a43] pt-5"><h3 class="mb-3 font-display text-[1.4rem] font-medium text-[#422a2c]">Binational operation</h3><p class="text-[#705258]">The only operator with own infrastructure in the United States and Spain.</p></article>
+                <article class="border-t-2 border-[#b38a43] pt-5"><h3 class="mb-3 font-display text-[1.4rem] font-medium text-[#422a2c]">+130 professionals</h3><p class="text-[#705258]">Dedicated to your logistics.</p></article>
+                <article class="border-t-2 border-[#b38a43] pt-5"><h3 class="mb-3 font-display text-[1.4rem] font-medium text-[#422a2c]">Own technology</h3><p class="text-[#705258]">For total visibility of your inventory.</p></article>
+                <article class="border-t-2 border-[#b38a43] pt-5"><h3 class="mb-3 font-display text-[1.4rem] font-medium text-[#422a2c]">E-commerce specialization</h3><p class="text-[#705258]">In fashion, electronics, and cosmetics.</p></article>
             </div>
         </section>
 
         <!-- CONTACT SECTION -->
-        <section id="contact">
-            <div class="contact-content">
-                <h2>Request logistics information</h2>
-                <p>
+        <section class="scroll-mt-5 border-t border-[#dcb68a] bg-[#fff0f5] px-[5%] py-[60px] sm:px-[8%] sm:py-[85px]" id="contact">
+            <div class="mx-auto max-w-[920px] text-left">
+                <h2 class="font-display text-[2rem] font-medium leading-[1.15] text-[#422a2c] sm:text-[2.6rem]">Request logistics information</h2>
+                <p class="mt-[18px] mb-7 text-[#705258]">
                     This form is for e-commerce companies looking to outsource logistics
                     in the US and Spain, not for individual package tracking or consumer returns.
                 </p>
-                <address class="contact-details">
-                    <a href="mailto:comercial@trackflow.com">comercial@trackflow.com</a>
-                    <a href="tel:+12135550147">Los Angeles: +1 213 555 0147</a>
-                    <a href="tel:+34976123456">Zaragoza: +34 976 123 456</a>
+                <address class="my-6 flex flex-wrap gap-x-8 gap-y-4 not-italic">
+                    <a class="inline-block py-2 underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]" href="mailto:comercial@trackflow.com">comercial@trackflow.com</a>
+                    <a class="inline-block py-2 underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]" href="tel:+12135550147">Los Angeles: +1 213 555 0147</a>
+                    <a class="inline-block py-2 underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]" href="tel:+34976123456">Zaragoza: +34 976 123 456</a>
                 </address>
-                <p class="form-note" id="form-instructions">All fields are required unless marked optional. Select at least one service.</p>
+                <p class="mt-2 text-[.9rem] text-[#705258]" id="form-instructions">All fields are required unless marked optional. Select at least one service.</p>
                 <form class="lead-form mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2" id="prospect-form" action="#contact" method="post" aria-describedby="form-instructions">
-                    <div class="field flex min-w-0 flex-col gap-2">
+                    <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="company">Company name</label>
-                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="company" name="company" type="text" autocomplete="organization" minlength="2" maxlength="150" pattern=".*\S.*\S.*" title="Enter at least 2 non-space characters." aria-describedby="company-help" required>
-                        <small id="company-help">At least 2 characters, not counting spaces.</small>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="company" name="company" type="text" autocomplete="organization" minlength="2" maxlength="150" pattern=".*\S.*\S.*" title="Enter at least 2 non-space characters." aria-describedby="company-help" required>
+                        <small class="text-sm text-[#705258]" id="company-help">At least 2 characters, not counting spaces.</small>
                     </div>
-                    <div class="field flex min-w-0 flex-col gap-2">
+                    <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="contact-name">Contact person</label>
-                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="contact-name" name="contact_name" type="text" autocomplete="name" maxlength="120" pattern="\s*\S+(?:\s+\S+)+\s*" title="Enter at least your first and last name, separated by a space." aria-describedby="name-help" required>
-                        <small id="name-help">Include your first and last name (at least 2 words).</small>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="contact-name" name="contact_name" type="text" autocomplete="name" maxlength="120" pattern="\s*\S+(?:\s+\S+)+\s*" title="Enter at least your first and last name, separated by a space." aria-describedby="name-help" required>
+                        <small class="text-sm text-[#705258]" id="name-help">Include your first and last name (at least 2 words).</small>
                     </div>
-                    <div class="field flex min-w-0 flex-col gap-2">
+                    <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="email">Corporate email</label>
-                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
                     </div>
-                    <div class="field flex min-w-0 flex-col gap-2">
+                    <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="phone">Phone</label>
-                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" pattern="\s*\+[1-9](?:[\s\(\)\.\-]*[0-9]){6,14}[\s\(\)\.\-]*" title="Start with + and your country code. Use 7-15 digits; spaces, parentheses, dots and hyphens are allowed." aria-describedby="phone-help" placeholder="+1 213 555 0147" required>
-                        <small id="phone-help">Include + and your country code. Examples: +12135550147, +1 (213) 555-0147, or +34 976 123 456.</small>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" pattern="\s*\+[1-9](?:[\s\(\)\.\-]*[0-9]){6,14}[\s\(\)\.\-]*" title="Start with + and your country code. Use 7-15 digits; spaces, parentheses, dots and hyphens are allowed." aria-describedby="phone-help" placeholder="+1 213 555 0147" required>
+                        <small class="text-sm text-[#705258]" id="phone-help">Include + and your country code. Examples: +12135550147, +1 (213) 555-0147, or +34 976 123 456.</small>
                     </div>
-                    <div class="field flex min-w-0 flex-col gap-2">
+                    <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="website">Company website (optional)</label>
-                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="website" name="website" type="url" autocomplete="url" maxlength="2048" pattern="https?://.+" title="Enter a valid URL starting with http:// or https://." placeholder="https://yourcompany.com" aria-describedby="website-help">
-                        <small id="website-help">Include the full URL, starting with https:// or http://.</small>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="website" name="website" type="url" autocomplete="url" maxlength="2048" pattern="https?://.+" title="Enter a valid URL starting with http:// or https://." placeholder="https://yourcompany.com" aria-describedby="website-help">
+                        <small class="text-sm text-[#705258]" id="website-help">Include the full URL, starting with https:// or http://.</small>
                     </div>
-                    <div class="field flex min-w-0 flex-col gap-2">
+                    <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="countries">Main operating country</label>
-                        <select class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="countries" name="countries" required>
+                        <select class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="countries" name="countries" required>
                             <option value="" disabled selected>Select a country</option>
                             <option value="United States">United States</option>
                             <option value="Spain">Spain</option>
@@ -723,9 +271,9 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <div class="field flex min-w-0 flex-col gap-2">
+                    <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="products">Product type</label>
-                        <select class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="products" name="products" required>
+                        <select class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="products" name="products" required>
                             <option value="" disabled selected>Select a product type</option>
                             <option value="Fashion">Fashion</option>
                             <option value="Electronics">Electronics</option>
@@ -734,9 +282,9 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <div class="field flex min-w-0 flex-col gap-2">
+                    <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="volume">Estimated monthly shipping volume</label>
-                        <select class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="volume" name="monthly_volume" required>
+                        <select class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="volume" name="monthly_volume" required>
                             <option value="" disabled selected>Select a shipping volume</option>
                             <option value="0-100">0-100</option>
                             <option value="101-500">101-500</option>
@@ -745,59 +293,59 @@
                             <option value="Not sure">Not sure</option>
                         </select>
                     </div>
-                    <div class="full-width volume-warning" id="volume-warning" hidden>
-                        <p id="volume-warning-message" role="alert">For volumes under 100 monthly shipments, our services might not be the most efficient solution. Are you sure you want to continue?</p>
-                        <label class="choice"><input id="volume-confirmation" name="low_volume_confirmed" type="checkbox" value="yes" aria-describedby="volume-warning-message">Yes, I want to continue</label>
+                    <div class="col-span-full rounded-md border-l-4 border-[#a1762b] bg-[#fff3d8] p-4" id="volume-warning" hidden>
+                        <p class="mb-3 text-[#422a2c]" id="volume-warning-message" role="alert">For volumes under 100 monthly shipments, our services might not be the most efficient solution. Are you sure you want to continue?</p>
+                        <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" id="volume-confirmation" name="low_volume_confirmed" type="checkbox" value="yes" aria-describedby="volume-warning-message">Yes, I want to continue</label>
                     </div>
-                    <fieldset class="full-width" aria-describedby="services-help">
-                        <legend>Services of interest</legend>
-                        <div class="choices">
-                            <label class="choice"><input type="checkbox" name="services" value="warehouse">Warehousing</label>
-                            <label class="choice"><input type="checkbox" name="services" value="last_mile">Last mile</label>
-                            <label class="choice"><input type="checkbox" name="services" value="returns">Reverse logistics</label>
+                    <fieldset class="col-span-full min-w-0 border-0 p-0" aria-describedby="services-help">
+                        <legend class="mb-3 font-semibold">Services of interest</legend>
+                        <div class="flex flex-wrap gap-x-6 gap-y-3">
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="checkbox" name="services" value="warehouse">Warehousing</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="checkbox" name="services" value="last_mile">Last mile</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="checkbox" name="services" value="returns">Reverse logistics</label>
                         </div>
-                        <p class="form-note" id="services-help">Select one or more services.</p>
+                        <p class="mt-2 text-[.9rem] text-[#705258]" id="services-help">Select one or more services.</p>
                     </fieldset>
-                    <fieldset class="full-width">
-                        <legend>Do you currently work with another 3PL?</legend>
-                        <div class="choices">
-                            <label class="choice"><input type="radio" name="current_3pl" value="Yes" required>Yes</label>
-                            <label class="choice"><input type="radio" name="current_3pl" value="No" required>No</label>
-                            <label class="choice"><input type="radio" name="current_3pl" value="Evaluating options" required>Evaluating options</label>
+                    <fieldset class="col-span-full min-w-0 border-0 p-0">
+                        <legend class="mb-3 font-semibold">Do you currently work with another 3PL?</legend>
+                        <div class="flex flex-wrap gap-x-6 gap-y-3">
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="radio" name="current_3pl" value="Yes" required>Yes</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="radio" name="current_3pl" value="No" required>No</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="radio" name="current_3pl" value="Evaluating options" required>Evaluating options</label>
                         </div>
                     </fieldset>
-                    <div class="field full-width flex min-w-0 flex-col gap-2">
+                    <div class="col-span-full flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="comments">Comments or specific needs (optional)</label>
-                        <textarea class="min-h-32 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="comments" name="comments" rows="4" maxlength="500" aria-describedby="comments-help comments-counter"></textarea>
-                        <small id="comments-help">Maximum 500 characters. Do not include sensitive information.</small>
-                        <small id="comments-counter" role="status" aria-live="polite" aria-atomic="true">0 / 500 characters</small>
+                        <textarea class="min-h-32 w-full resize-y rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="comments" name="comments" rows="4" maxlength="500" aria-describedby="comments-help comments-counter"></textarea>
+                        <small class="text-sm text-[#705258]" id="comments-help">Maximum 500 characters. Do not include sensitive information.</small>
+                        <small class="text-sm text-[#705258]" id="comments-counter" role="status" aria-live="polite" aria-atomic="true">0 / 500 characters</small>
                     </div>
-                    <div class="full-width">
-                        <label class="choice"><input type="checkbox" name="consent" value="yes" required>I accept the privacy policy</label>
-                        <p class="form-note">Use business contact details only. Do not include customer records or sensitive product information.</p>
+                    <div class="col-span-full">
+                        <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d]" type="checkbox" name="consent" value="yes" required>I accept the privacy policy</label>
+                        <p class="mt-2 text-[.9rem] text-[#705258]">Use business contact details only. Do not include customer records or sensitive product information.</p>
                     </div>
-                    <div class="full-width submit-row flex flex-wrap items-center gap-4">
-                        <button type="submit" class="primary-button inline-flex min-h-12 items-center justify-center px-5 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" disabled>Request information</button>
-                        <button type="reset" class="inline-flex min-h-12 items-center justify-center rounded-md border border-[#98727c] bg-transparent px-5 py-3 font-semibold text-[var(--ink)] transition hover:bg-[#f9dce5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2">Clear form</button>
-                        <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+                    <div class="col-span-full flex flex-wrap items-center gap-4">
+                        <button type="submit" class="inline-flex min-h-12 items-center justify-center rounded-md border border-[#a3223d] bg-[#a3223d] px-5 py-3 font-bold text-white shadow-[3px_3px_0_#e4bd68] transition-all hover:bg-[#82192f] hover:shadow-[1px_1px_0_#e4bd68] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d] disabled:cursor-wait disabled:opacity-70" disabled>Request information</button>
+                        <button type="reset" class="inline-flex min-h-12 items-center justify-center rounded-md border border-[#98727c] bg-transparent px-5 py-3 font-semibold text-[#422a2c] transition-colors hover:bg-[#f9dce5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]">Clear form</button>
+                        <p class="my-4 rounded-md px-4 py-3 font-semibold text-[#422a2c] empty:hidden" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
                     </div>
                 </form>
-                <div class="success-message" id="form-success" role="region" aria-labelledby="success-title" tabindex="-1" hidden>
-                    <h3 id="success-title"><strong>Thank you for your interest in TrackFlow!</strong></h3>
-                    <p>We have received your request. Our commercial team will review your information and contact you within the next 24-48 hours to schedule a call and learn about your logistics needs in detail.</p>
-                    <p>If you have any urgent inquiry, write to us directly at <a href="mailto:comercial@trackflow.com">comercial@trackflow.com</a></p>
+                <div class="mt-8 rounded-md border-l-4 border-[#a3223d] bg-[#f9dce5] p-6" id="form-success" role="region" aria-labelledby="success-title" tabindex="-1" hidden>
+                    <h3 class="mb-4 font-display text-[1.6rem] font-medium text-[#422a2c]" id="success-title">Thank you for your interest in TrackFlow!</h3>
+                    <p class="text-[#705258]">We have received your request. Our commercial team will review your information and contact you within the next 24-48 hours to schedule a call and learn about your logistics needs in detail.</p>
+                    <p class="text-[#705258]">If you have any urgent inquiry, write to us directly at <a class="underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]" href="mailto:comercial@trackflow.com">comercial@trackflow.com</a></p>
                 </div>
-                <noscript><p class="form-note">This simulated submission requires JavaScript. For enquiries, email <a href="mailto:comercial@trackflow.com">comercial@trackflow.com</a>.</p></noscript>
+                <noscript><p class="mt-2 text-[.9rem] text-[#705258]">This simulated submission requires JavaScript. For enquiries, email <a class="underline underline-offset-4" href="mailto:comercial@trackflow.com">comercial@trackflow.com</a>.</p></noscript>
             </div>
         </section>
     </main>
 
     <!-- FOOTER -->
-    <footer>
-        <a href="#home" class="logo">Track<span>Flow</span></a>
+    <footer class="flex flex-col items-center justify-between gap-5 border-t-[3px] border-[#e4bd68] bg-[#422a2c] px-[5%] py-6 text-center text-[.9rem] text-[#f9dce5] sm:flex-row sm:px-[8%] sm:py-7 sm:text-left">
+        <a href="#home" class="font-display text-[2rem] font-medium text-[#f9dce5]">Track<span class="text-[#e4bd68]">Flow</span></a>
 
         <p>&copy; 2025 TrackFlow. All rights reserved.</p>
-        <a class="social-link" href="https://www.linkedin.com/">LinkedIn</a>
+        <a class="inline-flex min-h-11 items-center underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e4bd68]" href="https://www.linkedin.com/">LinkedIn</a>
     </footer>
     <script>
         const prospectForm = document.querySelector('#prospect-form');
@@ -850,10 +398,10 @@
 
         for (const name of Object.keys(validationMessages)) {
             const controls = [...prospectForm.querySelectorAll(`[name="${name}"]`)];
-            const container = controls[0].closest('.field, fieldset, .full-width');
+            const container = controls[0].closest('[data-field], fieldset, .col-span-full');
             const error = document.createElement('small');
             error.id = `${name}-error`;
-            error.className = 'field-error';
+            error.className = 'mt-2 rounded border-l-4 border-[#b42318] bg-[#fef3f2] px-3 py-2 text-sm leading-6 text-[#b42318]';
             error.setAttribute('aria-live', 'polite');
             container.append(error);
             validationFields.set(name, { controls, error });
@@ -925,6 +473,7 @@
             });
             if (results.includes(false)) {
                 formStatus.textContent = 'Please correct the highlighted fields before submitting.';
+                formStatus.className = 'my-4 rounded-md border border-[#fecdca] bg-[#fef3f2] px-4 py-3 font-semibold text-[#912018] empty:hidden';
                 prospectForm.querySelector('[aria-invalid="true"]').focus();
                 return;
             }
@@ -932,6 +481,7 @@
                 volumeWarning.hidden = false;
                 volumeConfirmation.setAttribute('aria-invalid', 'true');
                 formStatus.textContent = document.querySelector('#volume-warning-message').textContent;
+                formStatus.className = 'my-4 rounded-md border border-[#fecdca] bg-[#fef3f2] px-4 py-3 font-semibold text-[#912018] empty:hidden';
                 volumeConfirmation.focus();
                 return;
             }

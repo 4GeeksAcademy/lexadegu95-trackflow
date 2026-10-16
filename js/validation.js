@@ -140,7 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!error) {
       error = document.createElement("p");
       error.id = `${name}-error`;
-      error.className = "field-error";
+      error.className =
+        "mt-2 rounded border-l-4 border-red-700 bg-red-50 px-3 py-2 text-sm leading-6 text-red-800";
       error.setAttribute("aria-live", "polite");
       error.hidden = true;
       input.insertAdjacentElement("afterend", error);
@@ -270,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
         statusMessage.textContent =
           "Please fix the highlighted errors before submitting.";
         statusMessage.className =
-          "rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800";
+          "rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800 empty:hidden";
       }
 
       const firstInvalid = form.querySelector(
@@ -290,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (statusMessage) {
       statusMessage.textContent = "Submitting your application...";
       statusMessage.className =
-        "rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800";
+        "rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800 empty:hidden";
     }
 
     try {
@@ -314,7 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
         statusMessage.textContent =
           "Your application was submitted successfully. Thank you for contacting Trackflow.";
         statusMessage.className =
-          "rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800";
+          "rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800 empty:hidden";
       }
 
       form.reset();
@@ -323,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
         statusMessage.textContent =
           "We could not submit your application. Please try again later or contact our team.";
         statusMessage.className =
-          "rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800";
+          "rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800 empty:hidden";
       }
     } finally {
       if (submitButton) {
