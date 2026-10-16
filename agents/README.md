@@ -122,7 +122,11 @@ agents/
 
 
 
+<<<<<<< HEAD
 Implementation status
+=======
+#Implementation status
+>>>>>>> a80a08f (created readme for agent tools)
 
 
 
@@ -168,7 +172,11 @@ Planned integration only; no real submission endpoint or CRM connection in the s
 
 
 
+<<<<<<< HEAD
 Example agent references
+=======
+#Example agent references
+>>>>>>> a80a08f (created readme for agent tools)
 
 
 
@@ -182,4 +190,8 @@ Coverage Information Agent uses coverage-lookup.
 
 
 
+<<<<<<< HEAD
 Sales Routing Agent uses lead-validator and, once implemented, sales-delivery.
+=======
+Sales Routing Agent uses lead-validator and, once implemented, sales-delivery.
+>>>>>>> a80a08f (created readme for agent tools)
