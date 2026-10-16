@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  const submitButton = form.querySelector('[type="submit"]');
   const statusMessage = document.getElementById("form-status");
   form.noValidate = true;
 
@@ -90,13 +91,24 @@ document.addEventListener("DOMContentLoaded", () => {
     country: {
       label: "Country",
       validate: (value) =>
-        value ? "" : "Please select your country."
+        ["United States", "Spain", "Other"].includes(value)
+          ? ""
+          : "Please select your country."
     },
 
     industry: {
       label: "Industry",
       validate: (value) =>
-        value ? "" : "Please select your industry."
+        [
+          "Fashion and Apparel",
+          "Electronics",
+          "Beauty and Personal Care",
+          "Home and Lifestyle",
+          "Food and Beverage",
+          "Other"
+        ].includes(value)
+          ? ""
+          : "Please select your industry."
     },
 
     monthlyOrders: {
@@ -184,9 +196,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Validate the service checkbox group.
   const services = form.querySelectorAll('input[name="services[]"]');
   const serviceError = document.getElementById("services-error");
+  const allowedServices = new Set([
+    "Warehouse management",
+    "Last-mile delivery",
+    "Returns management",
+    "Custom logistics"
+  ]);
 
   function validateServices() {
-    const valid = Array.from(services).some((service) => service.checked);
+    const valid = Array.from(services).some(
+      (service) => service.checked && allowedServices.has(service.value)
+    );
 
     if (serviceError) {
       serviceError.textContent = valid
@@ -231,8 +251,9 @@ document.addEventListener("DOMContentLoaded", () => {
     consent.addEventListener("change", validateConsent);
   }
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (submitButton?.disabled) return;
 
     const fieldResults = Object.keys(fields).map(validateField);
     const servicesValid = validateServices();
@@ -260,11 +281,55 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const originalButtonText = submitButton?.textContent;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+    }
+
     if (statusMessage) {
-      statusMessage.textContent =
-        "Success! Your application passed validation. This is a demo; no data has been sent.";
+      statusMessage.textContent = "Submitting your application...";
       statusMessage.className =
-        "rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800";
+        "rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800";
+    }
+
+    try {
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      payload["services[]"] = formData.getAll("services[]");
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error("Application submission failed.");
+      }
+
+      if (statusMessage) {
+        statusMessage.textContent =
+          "Your application was submitted successfully. Thank you for contacting Trackflow.";
+        statusMessage.className =
+          "rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800";
+      }
+
+      form.reset();
+    } catch (error) {
+      if (statusMessage) {
+        statusMessage.textContent =
+          "We could not submit your application. Please try again later or contact our team.";
+        statusMessage.className =
+          "rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800";
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
     }
   });
 });

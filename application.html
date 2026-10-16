@@ -273,11 +273,11 @@
                                     class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
                                 >
                                     <option value="">Select an industry</option>
-                                    <option value="Fashion">Fashion and apparel</option>
+                                    <option value="Fashion and Apparel">Fashion and Apparel</option>
                                     <option value="Electronics">Electronics</option>
-                                    <option value="Beauty">Beauty and personal care</option>
-                                    <option value="Home">Home and lifestyle</option>
-                                    <option value="Food">Food and beverage</option>
+                                    <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+                                    <option value="Home and Lifestyle">Home and Lifestyle</option>
+                                    <option value="Food and Beverage">Food and Beverage</option>
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
@@ -286,7 +286,7 @@
                     </fieldset>
 
                     <!-- Service Requirements -->
-                    <fieldset class="space-y-5">
+                    <fieldset class="space-y-5" aria-describedby="services-help services-error">
                         <legend class="mb-2 text-lg font-bold text-slate-900">
                             3. Logistics Requirements
                         </legend>
@@ -419,6 +419,7 @@
                                 type="checkbox"
                                 value="yes"
                                 required
+                                aria-describedby="privacyConsent-error"
                                 class="mt-1 accent-blue-700"
                             >
 
