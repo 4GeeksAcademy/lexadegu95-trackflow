@@ -431,7 +431,6 @@
         .choice input { width: 20px; height: 20px; min-height: 20px; flex-shrink: 0; accent-color: var(--accent); }
         .contact-content .form-note { margin: 8px 0 0; font-size: .9rem; color: #475569; }
         .submit-row { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .contact-content .form-status { margin: 0; color: #172033; }
         .primary-button:disabled { cursor: wait; opacity: .7; }
         body { color: var(--ink); background: #fff9fb; }
         h1, h2, h3, .logo { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: 0; }
@@ -504,10 +503,39 @@
         input:hover, textarea:hover { border-color: var(--ink); }
         input:focus, textarea:focus { background: #ffffff; }
         .choice input { accent-color: var(--accent); }
-        .contact-content .form-note, .contact-content .form-status { color: var(--muted); }
-        .field-error { color: #a3223d; font-size: .9rem; font-weight: 600; }
-        .field-error:empty { display: none; }
-        input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #a3223d; }
+        .contact-content .form-note { color: var(--muted); }
+        .field-error {
+            color: #b42318;
+            background-color: #fef3f2;
+            border-left: 4px solid #b42318;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-top: 6px;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        .field-error[hidden], .field-error:empty { display: none; }
+        .form-status {
+            padding: 12px 16px;
+            margin: 16px 0;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .form-status.error {
+            color: #912018;
+            background-color: #fef3f2;
+            border: 1px solid #fecdca;
+        }
+        .form-status.success {
+            color: #166534;
+            background-color: #f0fdf4;
+            border: 1px solid #86efac;
+        }
+        .form-status:empty { display: none; }
+        input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
+            border: 2px solid #b42318;
+            outline-color: #b42318;
+        }
         .success-message { margin-top: 32px; padding: 24px; background: var(--pink); border-left: 4px solid var(--red); border-radius: 6px; }
         .success-message h3 { font-size: 1.6rem; margin-bottom: 16px; }
         .success-message a { text-decoration: underline; text-underline-offset: 4px; }
