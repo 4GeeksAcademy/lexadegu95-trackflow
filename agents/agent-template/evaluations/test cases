@@ -1,0 +1,435 @@
+Trackflow Website Test Cases
+
+1. Accessibility Tests
+
+ACC-001: Semantic HTML Structure
+
+Objective: Verify that the page uses meaningful HTML elements.
+
+Steps:
+
+Inspect the page structure.
+
+Check for a <header>, <nav>, <main>, and <footer> where appropriate.
+
+Check that headings follow a logical hierarchy.
+
+Expected result: Content has meaningful structure and headings are not selected solely for their visual appearance.
+
+Priority: High
+
+ACC-002: Contact Form Labels
+
+Objective: Ensure every form field has an accessible name.
+
+Steps:
+
+Inspect every input, select, and textarea.
+
+Confirm that each field has an associated <label> or another valid accessible name.
+
+Verify that label associations use matching for and id attributes when applicable.
+
+Expected result: Users can identify every field without relying on placeholder text.
+
+Priority: Critical
+
+ACC-003: Keyboard Navigation
+
+Objective: Verify that interactive elements work without a mouse.
+
+Steps:
+
+Navigate the page using Tab and Shift+Tab.
+
+Activate buttons and links using the keyboard.
+
+Complete the contact form using the keyboard.
+
+Expected result: Focus is visible, navigation order is logical, and controls can be operated using the keyboard.
+
+Priority: Critical
+
+ACC-004: Image Alternatives
+
+Objective: Verify that meaningful images have appropriate text alternatives.
+
+Steps:
+
+Inspect all <img> elements.
+
+Check that informative images have meaningful alt text.
+
+Check that purely decorative images use an empty alt="".
+
+Expected result: Images are understandable to users of assistive technology without redundant descriptions.
+
+Priority: High
+
+ACC-005: Color Contrast and Focus
+
+Objective: Check visual accessibility.
+
+Steps:
+
+Measure text and background contrast.
+
+Check links, buttons, form errors, and keyboard focus indicators.
+
+Expected result: Normal text generally meets a contrast ratio of 4.5:1; large text generally meets 3:1. Applicable controls and focus indicators are also sufficiently distinguishable.
+
+Priority: High
+
+ACC-006: Accessible Form Errors
+
+Objective: Ensure validation errors can be identified by all users.
+
+Steps:
+
+Submit the form with missing or invalid values.
+
+Inspect the error messages and affected fields.
+
+Check whether errors are programmatically associated with the fields and whether invalid fields expose their state.
+
+Expected result: Errors are specific, understandable, and not communicated through color alone.
+
+Priority: Critical
+
+2. Responsive Design Tests
+
+RES-001: Mobile Layout
+
+Objective: Verify usability on narrow screens.
+
+Steps:
+
+Test at approximately 320px, 375px, and 390px viewport widths.
+
+Inspect navigation, headings, content sections, cards, buttons, and forms.
+
+Expected result: Content remains readable, controls remain usable, and no unintended horizontal page scrolling occurs.
+
+Priority: Critical
+
+RES-002: Tablet Layout
+
+Objective: Verify layout behavior at tablet widths.
+
+Steps:
+
+Test at approximately 768px and 1024px widths.
+
+Inspect columns, spacing, navigation, and form alignment.
+
+Expected result: Components adapt without overlapping or leaving large unintended gaps.
+
+Priority: High
+
+RES-003: Desktop Layout
+
+Objective: Verify the full desktop experience.
+
+Steps:
+
+Test at approximately 1280px and 1440px widths.
+
+Inspect content alignment, readable line lengths, and section spacing.
+
+Expected result: The layout remains consistent and professional across desktop sizes.
+
+Priority: High
+
+RES-004: Responsive Navigation
+
+Objective: Verify that navigation adapts to smaller screens.
+
+Steps:
+
+Test the navigation at mobile, tablet, and desktop widths.
+
+If a mobile menu exists, open and close it using pointer and keyboard input.
+
+Expected result: Navigation remains accessible, usable, and free of overlapping content.
+
+Priority: High
+
+RES-005: Zoom and Text Scaling
+
+Objective: Check whether content remains usable when enlarged.
+
+Steps:
+
+Zoom the browser to 200%.
+
+Inspect navigation, content, buttons, and form controls.
+
+Expected result: Content remains available without clipping or loss of functionality, subject to applicable WCAG requirements.
+
+Priority: High
+
+3. Form Validation Tests
+
+FORM-001: Empty Submission
+
+Objective: Prevent submission when required fields are missing.
+
+Steps:
+
+Leave required fields empty.
+
+Submit the contact form.
+
+Expected result: Submission is blocked or rejected with clear, accessible validation feedback.
+
+Priority: Critical
+
+FORM-002: Invalid Email Address
+
+Objective: Reject malformed email addresses.
+
+Steps:
+
+Enter an invalid email such as invalid-email.
+
+Submit the form.
+
+Expected result: The form identifies the invalid email and does not accept the submission.
+
+Priority: Critical
+
+FORM-003: Valid Form Submission
+
+Objective: Verify the intended successful submission flow.
+
+Steps:
+
+Enter valid values in all required fields.
+
+Submit the form.
+
+Inspect the actual request and response if a backend is configured.
+
+Expected result: Data reaches the configured submission endpoint, success is shown only after confirmation, and users receive a clear confirmation message.
+
+Priority: Critical
+
+FORM-004: Server or Network Failure
+
+Objective: Verify behavior when submission fails.
+
+Steps:
+
+Simulate an unavailable endpoint or failed network request.
+
+Submit valid form data.
+
+Expected result: The user receives an error message, their entered data is preserved where practical, and the interface does not falsely report success.
+
+Priority: Critical
+
+FORM-005: Duplicate Submission
+
+Objective: Avoid accidental duplicate requests.
+
+Steps:
+
+Submit the form.
+
+Attempt to submit it repeatedly while the request is processing.
+
+Expected result: Repeated submissions are appropriately controlled, and duplicate requests are prevented where required.
+
+Priority: High
+
+FORM-006: Input Boundaries and Unexpected Text
+
+Objective: Check input handling and security.
+
+Steps:
+
+Test empty strings, long values, whitespace, punctuation, and unexpected characters.
+
+Test text resembling HTML or script code in text fields.
+
+Expected result: Inputs are handled safely, length limits are enforced where appropriate, and user-provided content is not executed as code.
+
+Priority: Critical
+
+FORM-007: Server-Side Validation
+
+Objective: Confirm that validation is not limited to browser-side checks.
+
+Steps:
+
+Inspect the form submission endpoint or backend implementation.
+
+Test invalid requests against the endpoint in an authorized test environment.
+
+Expected result: The backend independently validates fields and rejects invalid or unauthorized requests.
+
+Priority: Critical
+
+4. Code Quality Tests
+
+CODE-001: HTML Validity
+
+Objective: Detect invalid HTML structure.
+
+Steps:
+
+Inspect element nesting and closing tags.
+
+Check for duplicate IDs and invalid attributes.
+
+Run an HTML validator.
+
+Expected result: No significant markup errors remain.
+
+Priority: High
+
+CODE-002: JavaScript Reliability
+
+Objective: Detect runtime errors.
+
+Steps:
+
+Load the page.
+
+Interact with navigation and the contact form.
+
+Inspect the browser console.
+
+Expected result: No unhandled exceptions or unexpected console errors occur.
+
+Priority: High
+
+CODE-003: CSS and Responsive Rules
+
+Objective: Check style consistency and maintainability.
+
+Steps:
+
+Inspect stylesheets and responsive breakpoints.
+
+Look for conflicting rules, unintended overrides, and broken layouts.
+
+Expected result: Styles are organized, responsive, and free of significant layout defects.
+
+Priority: Medium
+
+CODE-004: Dependencies and External Resources
+
+Objective: Identify dependency and loading problems.
+
+Steps:
+
+Inspect external scripts, stylesheets, fonts, and image resources.
+
+Check for failed requests and unnecessary dependencies.
+
+Review the use of third-party scripts.
+
+Expected result: Required resources load successfully, and dependencies are justified and appropriately maintained.
+
+Priority: High
+
+CODE-005: Security and Data Handling
+
+Objective: Verify safe handling of user data.
+
+Steps:
+
+Inspect form handling and any backend integration.
+
+Check for unsafe HTML insertion, exposed secrets, and sensitive data in client-side code.
+
+Verify HTTPS and appropriate server-side protections in the deployed environment.
+
+Expected result: No critical data-handling or client-side security issues are identified.
+
+Priority: Critical
+
+CODE-006: Maintainability
+
+Objective: Ensure the source code is understandable and reusable.
+
+Steps:
+
+Inspect naming conventions, duplicated logic, and file organization.
+
+Check whether event handlers and validation logic are easy to locate.
+
+Review comments and documentation for accuracy.
+
+Expected result: Code is understandable, reasonably modular, and documented where necessary.
+
+Priority: Medium
+
+Test Results Template
+
+Test ID
+
+Status
+
+Evidence / Notes
+
+ACC-001
+
+Not run
+
+
+
+ACC-002
+
+Not run
+
+
+
+RES-001
+
+Not run
+
+
+
+RES-002
+
+Not run
+
+
+
+FORM-001
+
+Not run
+
+
+
+FORM-003
+
+Not run
+
+
+
+FORM-004
+
+Not run
+
+
+
+CODE-001
+
+Not run
+
+
+
+CODE-002
+
+Not run
+
+
+
+CODE-005
+
+Not run
+
+Add a row for every test executed. Do not mark unexecuted tests as passing.
