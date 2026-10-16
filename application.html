@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Apply for a tailored logistics solution with Trackflow. Tell us about your business, shipping needs, warehouse requirements, and returns."
+    >
+
+    <title>Request a Logistics Proposal | Trackflow</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <header class="border-b border-slate-200 bg-white">
+        <nav
+            class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5"
+            aria-label="Main navigation"
+        >
+            <a
+                href="index.html"
+                class="text-2xl font-bold tracking-tight text-blue-700"
+                aria-label="Trackflow home"
+            >
+                Trackflow
+            </a>
+
+            <div class="flex items-center gap-5">
+                <a
+                    href="index.html"
+                    class="text-sm font-medium text-slate-600 hover:text-blue-700"
+                >
+                    Home
+                </a>
+
+                <a
+                    href="#application-form"
+                    class="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                    Request a Proposal
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="bg-blue-950 px-6 py-16 text-white md:py-20">
+            <div class="mx-auto max-w-4xl text-center">
+                <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+                    Let's Move Your Business Forward
+                </p>
+
+                <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+                    Request a Logistics Proposal
+                </h1>
+
+                <p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-blue-100 sm:text-lg">
+                    Tell us about your business and logistics needs.
+                    Our team can use your information to prepare a solution
+                    tailored to your operations.
+                </p>
+            </div>
+        </section>
+
+        <!-- Application Form -->
+        <section
+            id="application-form"
+            class="px-6 py-12 md:py-16"
+            aria-labelledby="form-heading"
+        >
+            <div class="mx-auto max-w-4xl">
+
+                <div class="mb-8">
+                    <h2
+                        id="form-heading"
+                        class="text-2xl font-bold text-slate-900"
+                    >
+                        Business Application
+                    </h2>
+
+                    <p class="mt-2 text-sm leading-6 text-slate-600">
+                        Complete the fields below so we can understand
+                        your requirements. Required fields are marked
+                        with an asterisk (*).
+                    </p>
+                </div>
+
+                <form
+                    id="applicationForm"
+                    action="/api/applications"
+                    method="POST"
+                    class="space-y-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10"
+                >
+
+                    <!-- Contact Information -->
+                    <fieldset class="space-y-5">
+                        <legend class="mb-2 text-lg font-bold text-slate-900">
+                            1. Contact Information
+                        </legend>
+
+                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+
+                            <div>
+                                <label
+                                    for="firstName"
+                                    class="mb-2 block text-sm font-medium"
+                                >
+                                    First name *
+                                </label>
+
+                                <input
+                                    id="firstName"
+                                    name="firstName"
+                                    type="text"
+                                    autocomplete="given-name"
+                                    maxlength="80"
+                                    required
+                                    class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                >
+                            </div>
+
+                            <div>
+                                <label
+                                    for="lastName"
+                                    class="mb-2 block text-sm font-medium"
+                                >
+                                    Last name *
+                                </label>
+
+                                <input
+                                    id="lastName"
+                                    name="lastName"
+                                    type="text"
+                                    autocomplete="family-name"
+                                    maxlength="80"
+                                    required
+                                    class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                >
+                            </div>
+
+                            <div>
+                                <label
+                                    for="email"
+                                    class="mb-2 block text-sm font-medium"
+                                >
+                                    Business email *
+                                </label>
+
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    autocomplete="email"
+                                    maxlength="254"
+                                    required
+                                    class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                >
+                            </div>
+
+                            <div>
+                                <label
+                                    for="phone"
+                                    class="mb-2 block text-sm font-medium"
+                                >
+                                    Phone number
+                                </label>
+
+                                <input
+                                    id="phone"
+                                    name="phone"
+                                    type="tel"
+                                    autocomplete="tel"
+                                    maxlength="30"
+                                    class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                >
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                    <!-- Business Information -->
+                    <fieldset class="space-y-5">
+                        <legend class="mb-2 text-lg font-bold text-slate-900">
+                            2. Business Information
+                        </legend>
+
+                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+
+                            <div>
+                                <label
+                                    for="company"
+                                    class="mb-2 block text-sm font-medium"
+                                >
+                                    Company name *
+                                </label>
+
+                                <input
+                                    id="company"
+                                    name="company"
+                                    type="text"
+                                    autocomplete="organization"
+                                    maxlength="150"
+                                    required
+                                    class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                >
+                            </div>
+
+                            <div>
+                                <label
+                                    for="website"
+                                    class="mb-2 block text-sm font-medium"
+                                >
+                                    Company website
+                                </label>
+
+                                <input
+                                    id="website"
+                                    name="website"
+                                    type="url"
+                                    inputmode="url"
+                                    placeholder="https://example.com"
+                                    maxlength="2048"
+                                    class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                >
+                            </div>
+
+                            <div>
+                                <label
+                                    for="country"
+                                    class="mb-2 block text-sm font-medium"
+                                >
+                                    Primary operating country *
+                                </label>
+
+                                <select
+                                    id="country"
+                                    name="country"
+                                    required
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                >
+                                    <option value="">Select a country</option>
+                                    <option value="United States">United States</option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label
+                                    for="industry"
+                                    class="mb-2 block text-sm font-medium"
+                                >
+                                    Industry *
+                                </label>
+
+                                <select
+                                    id="industry"
+                                    name="industry"
+                                    required
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                >
+                                    <option value="">Select an industry</option>
+                                    <option value="Fashion">Fashion and apparel</option>
+                                    <option value="Electronics">Electronics</option>
+                                    <option value="Beauty">Beauty and personal care</option>
+                                    <option value="Home">Home and lifestyle</option>
+                                    <option value="Food">Food and beverage</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                    <!-- Service Requirements -->
+                    <fieldset class="space-y-5">
+                        <legend class="mb-2 text-lg font-bold text-slate-900">
+                            3. Logistics Requirements
+                        </legend>
+
+                        <p class="text-sm text-slate-600">
+                            Select every service your business needs.
+                        </p>
+
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+                            <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-slate-200 p-4 hover:border-blue-400">
+                                <input
+                                    type="checkbox"
+                                    name="services[]"
+                                    value="Warehouse management"
+                                    class="mt-1 accent-blue-700"
+                                >
+                                <span>
+                                    <span class="block font-semibold">Warehouse management</span>
+                                    <span class="mt-1 block text-sm text-slate-600">
+                                        Inventory storage and fulfillment.
+                                    </span>
+                                </span>
+                            </label>
+
+                            <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-slate-200 p-4 hover:border-blue-400">
+                                <input
+                                    type="checkbox"
+                                    name="services[]"
+                                    value="Last-mile delivery"
+                                    class="mt-1 accent-blue-700"
+                                >
+                                <span>
+                                    <span class="block font-semibold">Last-mile delivery</span>
+                                    <span class="mt-1 block text-sm text-slate-600">
+                                        Deliver orders to customers.
+                                    </span>
+                                </span>
+                            </label>
+
+                            <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-slate-200 p-4 hover:border-blue-400">
+                                <input
+                                    type="checkbox"
+                                    name="services[]"
+                                    value="Returns management"
+                                    class="mt-1 accent-blue-700"
+                                >
+                                <span>
+                                    <span class="block font-semibold">Returns management</span>
+                                    <span class="mt-1 block text-sm text-slate-600">
+                                        Process customer returns.
+                                    </span>
+                                </span>
+                            </label>
+
+                            <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-slate-200 p-4 hover:border-blue-400">
+                                <input
+                                    type="checkbox"
+                                    name="services[]"
+                                    value="Custom logistics"
+                                    class="mt-1 accent-blue-700"
+                                >
+                                <span>
+                                    <span class="block font-semibold">Custom logistics</span>
+                                    <span class="mt-1 block text-sm text-slate-600">
+                                        Discuss a tailored solution.
+                                    </span>
+                                </span>
+                            </label>
+
+                        </div>
+
+                        <div>
+                            <label
+                                for="monthlyOrders"
+                                class="mb-2 block text-sm font-medium"
+                            >
+                                Estimated monthly orders *
+                            </label>
+
+                            <select
+                                id="monthlyOrders"
+                                name="monthlyOrders"
+                                required
+                                class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            >
+                                <option value="">Select order volume</option>
+                                <option value="Under 500">Under 500</option>
+                                <option value="500-2000">500–2,000</option>
+                                <option value="2001-10000">2,001–10,000</option>
+                                <option value="10001-50000">10,001–50,000</option>
+                                <option value="Over 50000">Over 50,000</option>
+                                <option value="Not yet determined">Not yet determined</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                for="requirements"
+                                class="mb-2 block text-sm font-medium"
+                            >
+                                Tell us about your requirements *
+                            </label>
+
+                            <textarea
+                                id="requirements"
+                                name="requirements"
+                                rows="5"
+                                minlength="10"
+                                maxlength="3000"
+                                required
+                                placeholder="Describe your products, shipping destinations, warehouse needs, or returns process."
+                                class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            ></textarea>
+
+                            <p class="mt-2 text-xs text-slate-500">
+                                Maximum 3,000 characters.
+                            </p>
+                        </div>
+                    </fieldset>
+
+                    <!-- Consent -->
+                    <div class="space-y-4 border-t border-slate-200 pt-6">
+
+                        <label class="flex items-start gap-3 text-sm leading-6 text-slate-600">
+                            <input
+                                id="privacyConsent"
+                                name="privacyConsent"
+                                type="checkbox"
+                                value="yes"
+                                required
+                                class="mt-1 accent-blue-700"
+                            >
+
+                            <span>
+                                I acknowledge that my information will be
+                                processed to respond to my logistics inquiry
+                                in accordance with the applicable
+                                <a
+                                    href="privacy.html"
+                                    class="font-medium text-blue-700 underline"
+                                >
+                                    Privacy Policy
+                                </a>.
+                                *
+                            </span>
+                        </label>
+
+                        <p class="text-xs leading-5 text-slate-500">
+                            Ensure your published privacy policy accurately
+                            explains how application data is collected,
+                            used, stored, and shared.
+                        </p>
+
+                    </div>
+
+                    <!-- Submission Status -->
+                    <div
+                        id="formStatus"
+                        role="status"
+                        aria-live="polite"
+                        class="hidden rounded-lg p-4 text-sm"
+                    ></div>
+
+                    <!-- Submit -->
+                    <div class="space-y-3">
+                        <button
+                            id="submitButton"
+                            type="submit"
+                            class="w-full rounded-lg bg-blue-700 px-6 py-4 font-semibold text-white transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                        >
+                            Submit Application
+                        </button>
+
+                        <p class="text-xs leading-5 text-slate-500">
+                            Submitting this form requests a proposal.
+                            It does not guarantee service availability or
+                            establish a contract.
+                        </p>
+                    </div>
+
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white px-6 py-8">
+        <div class="mx-auto flex max-w-7xl flex-col justify-between gap-4 text-sm text-slate-500 sm:flex-row">
+            <p>&copy; <span id="currentYear"></span> Trackflow. All rights reserved.</p>
+
+            <div class="flex gap-5">
+                <a href="index.html" class="hover:text-blue-700">
+                    Home
+                </a>
+
+                <a href="privacy.html" class="hover:text-blue-700">
+                    Privacy Policy
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Behavior -->
+    <script>
+        const applicationForm = document.getElementById("applicationForm");
+        const submitButton = document.getElementById("submitButton");
+        const formStatus = document.getElementById("formStatus");
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        function showStatus(message, type) {
+            formStatus.textContent = message;
+            formStatus.className = "rounded-lg p-4 text-sm";
+
+            if (type === "success") {
+                formStatus.classList.add(
+                    "bg-green-50",
+                    "text-green-800",
+                    "border",
+                    "border-green-200"
+                );
+            } else {
+                formStatus.classList.add(
+                    "bg-red-50",
+                    "text-red-800",
+                    "border",
+                    "border-red-200"
+                );
+            }
+        }
+
+        applicationForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            if (!applicationForm.checkValidity()) {
+                applicationForm.reportValidity();
+                return;
+            }
+
+            const selectedServices = applicationForm.querySelectorAll(
+                'input[name="services[]"]:checked'
+            );
+
+            if (selectedServices.length === 0) {
+                showStatus(
+                    "Please select at least one logistics service.",
+                    "error"
+                );
+
+                applicationForm.querySelector(
+                    'input[name="services[]"]'
+                ).focus();
+
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = "Submitting...";
+
+            try {
+                const response = await fetch(applicationForm.action, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(
+                        Object.fromEntries(
+                            new FormData(applicationForm)
+                        )
+                    )
+                });
+
+                if (!response.ok) {
+                    throw new Error("Application submission failed.");
+                }
+
+                showStatus(
+                    "Your application was submitted successfully. Thank you for contacting Trackflow.",
+                    "success"
+                );
+
+                applicationForm.reset();
+
+            } catch (error) {
+                showStatus(
+                    "We could not submit your application. Please try again later or contact our team.",
+                    "error"
+                );
+
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = "Submit Application";
+            }
+        });
+    </script>
+
+</body>
+</html>
