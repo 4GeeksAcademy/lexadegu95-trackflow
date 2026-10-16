@@ -1,4 +1,4 @@
-# `agents/tools` folder
+#
 
 This folder groups **reusable tools** that agents in the monorepo can use (for example: connectors to internal APIs, database wrappers, scraping utilities, validators, service clients, etc.).
 
