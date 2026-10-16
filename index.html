@@ -53,6 +53,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,wght@0,500;0,600;1,500&amp;display=swap" rel="stylesheet">
+    <script>tailwind = { config: { corePlugins: { preflight: false } } };</script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         /* RESET */
@@ -417,7 +419,6 @@
         .coverage-badge { border-radius: 8px; }
         .coverage-badge span { font-size: 1.4rem; font-weight: 700; color: #142d4e; }
         .contact-content { max-width: 920px; text-align: left; }
-        .lead-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
         .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
         label, legend { font-weight: 600; }
         input, select, textarea { width: 100%; min-height: 48px; padding: 11px 12px; font: inherit; color: #172033; background: white; border: 1px solid #748295; border-radius: 4px; }
@@ -544,7 +545,6 @@
             .hero .eyebrow { font-size: .65rem; transform: none; }
             .coverage-content h2, .section-heading h2, .contact-content h2 { font-size: 2rem; }
             .coverage-badge { transform: none; }
-            .lead-form { grid-template-columns: 1fr; }
             .coverage-badge { min-width: 0; width: 100%; }
             .hero-actions { align-items: flex-start; flex-direction: column; }
         }
@@ -706,34 +706,34 @@
                     <a href="tel:+34976123456">Zaragoza: +34 976 123 456</a>
                 </address>
                 <p class="form-note" id="form-instructions">All fields are required unless marked optional. Select at least one service.</p>
-                <form class="lead-form" id="prospect-form" action="#contact" method="post" aria-describedby="form-instructions">
-                    <div class="field">
-                        <label for="company">Company name</label>
-                        <input id="company" name="company" type="text" autocomplete="organization" minlength="2" maxlength="150" pattern=".*\S.*\S.*" title="Enter at least 2 non-space characters." aria-describedby="company-help" required>
+                <form class="lead-form mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2" id="prospect-form" action="#contact" method="post" aria-describedby="form-instructions">
+                    <div class="field flex min-w-0 flex-col gap-2">
+                        <label class="text-sm font-semibold" for="company">Company name</label>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="company" name="company" type="text" autocomplete="organization" minlength="2" maxlength="150" pattern=".*\S.*\S.*" title="Enter at least 2 non-space characters." aria-describedby="company-help" required>
                         <small id="company-help">At least 2 characters, not counting spaces.</small>
                     </div>
-                    <div class="field">
-                        <label for="contact-name">Contact person</label>
-                        <input id="contact-name" name="contact_name" type="text" autocomplete="name" maxlength="120" pattern="\s*\S+(?:\s+\S+)+\s*" title="Enter at least your first and last name, separated by a space." aria-describedby="name-help" required>
+                    <div class="field flex min-w-0 flex-col gap-2">
+                        <label class="text-sm font-semibold" for="contact-name">Contact person</label>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="contact-name" name="contact_name" type="text" autocomplete="name" maxlength="120" pattern="\s*\S+(?:\s+\S+)+\s*" title="Enter at least your first and last name, separated by a space." aria-describedby="name-help" required>
                         <small id="name-help">Include your first and last name (at least 2 words).</small>
                     </div>
-                    <div class="field">
-                        <label for="email">Corporate email</label>
-                        <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                    <div class="field flex min-w-0 flex-col gap-2">
+                        <label class="text-sm font-semibold" for="email">Corporate email</label>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
                     </div>
-                    <div class="field">
-                        <label for="phone">Phone</label>
-                        <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" pattern="\s*\+[1-9](?:[\s\(\)\.\-]*[0-9]){6,14}[\s\(\)\.\-]*" title="Start with + and your country code. Use 7-15 digits; spaces, parentheses, dots and hyphens are allowed." aria-describedby="phone-help" placeholder="+1 213 555 0147" required>
+                    <div class="field flex min-w-0 flex-col gap-2">
+                        <label class="text-sm font-semibold" for="phone">Phone</label>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" pattern="\s*\+[1-9](?:[\s\(\)\.\-]*[0-9]){6,14}[\s\(\)\.\-]*" title="Start with + and your country code. Use 7-15 digits; spaces, parentheses, dots and hyphens are allowed." aria-describedby="phone-help" placeholder="+1 213 555 0147" required>
                         <small id="phone-help">Include + and your country code. Examples: +12135550147, +1 (213) 555-0147, or +34 976 123 456.</small>
                     </div>
-                    <div class="field">
-                        <label for="website">Company website (optional)</label>
-                        <input id="website" name="website" type="url" autocomplete="url" maxlength="2048" pattern="https?://.+" title="Enter a valid URL starting with http:// or https://." placeholder="https://yourcompany.com" aria-describedby="website-help">
+                    <div class="field flex min-w-0 flex-col gap-2">
+                        <label class="text-sm font-semibold" for="website">Company website (optional)</label>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="website" name="website" type="url" autocomplete="url" maxlength="2048" pattern="https?://.+" title="Enter a valid URL starting with http:// or https://." placeholder="https://yourcompany.com" aria-describedby="website-help">
                         <small id="website-help">Include the full URL, starting with https:// or http://.</small>
                     </div>
-                    <div class="field">
-                        <label for="countries">Main operating country</label>
-                        <select id="countries" name="countries" required>
+                    <div class="field flex min-w-0 flex-col gap-2">
+                        <label class="text-sm font-semibold" for="countries">Main operating country</label>
+                        <select class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="countries" name="countries" required>
                             <option value="" disabled selected>Select a country</option>
                             <option value="United States">United States</option>
                             <option value="Spain">Spain</option>
@@ -741,9 +741,9 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <div class="field">
-                        <label for="products">Product type</label>
-                        <select id="products" name="products" required>
+                    <div class="field flex min-w-0 flex-col gap-2">
+                        <label class="text-sm font-semibold" for="products">Product type</label>
+                        <select class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="products" name="products" required>
                             <option value="" disabled selected>Select a product type</option>
                             <option value="Fashion">Fashion</option>
                             <option value="Electronics">Electronics</option>
@@ -752,9 +752,9 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <div class="field">
-                        <label for="volume">Estimated monthly shipping volume</label>
-                        <select id="volume" name="monthly_volume" required>
+                    <div class="field flex min-w-0 flex-col gap-2">
+                        <label class="text-sm font-semibold" for="volume">Estimated monthly shipping volume</label>
+                        <select class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="volume" name="monthly_volume" required>
                             <option value="" disabled selected>Select a shipping volume</option>
                             <option value="0-100">0-100</option>
                             <option value="101-500">101-500</option>
@@ -784,9 +784,9 @@
                             <label class="choice"><input type="radio" name="current_3pl" value="Evaluating options" required>Evaluating options</label>
                         </div>
                     </fieldset>
-                    <div class="field full-width">
-                        <label for="comments">Comments or specific needs (optional)</label>
-                        <textarea id="comments" name="comments" rows="4" maxlength="500" aria-describedby="comments-help comments-counter"></textarea>
+                    <div class="field full-width flex min-w-0 flex-col gap-2">
+                        <label class="text-sm font-semibold" for="comments">Comments or specific needs (optional)</label>
+                        <textarea class="min-h-32 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[var(--ink)] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" id="comments" name="comments" rows="4" maxlength="500" aria-describedby="comments-help comments-counter"></textarea>
                         <small id="comments-help">Maximum 500 characters. Do not include sensitive information.</small>
                         <small id="comments-counter" role="status" aria-live="polite" aria-atomic="true">0 / 500 characters</small>
                     </div>
@@ -794,8 +794,9 @@
                         <label class="choice"><input type="checkbox" name="consent" value="yes" required>I accept the privacy policy</label>
                         <p class="form-note">Use business contact details only. Do not include customer records or sensitive product information.</p>
                     </div>
-                    <div class="full-width submit-row">
-                        <button type="submit" class="primary-button" disabled>Request information</button>
+                    <div class="full-width submit-row flex flex-wrap items-center gap-4">
+                        <button type="submit" class="primary-button inline-flex min-h-12 items-center justify-center px-5 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2" disabled>Request information</button>
+                        <button type="reset" class="inline-flex min-h-12 items-center justify-center rounded-md border border-[#98727c] bg-transparent px-5 py-3 font-semibold text-[var(--ink)] transition hover:bg-[#f9dce5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2">Clear form</button>
                         <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
                     </div>
                 </form>
@@ -918,6 +919,7 @@
         prospectForm.noValidate = true;
         prospectForm.addEventListener('reset', () => {
             touchedFields.clear();
+            formStatus.textContent = '';
             for (const { controls, error } of validationFields.values()) {
                 error.textContent = '';
                 for (const control of controls) {
