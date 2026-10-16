@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const submitButton = form.querySelector('[type="submit"]');
   const statusMessage = document.getElementById("form-status");
+  form.noValidate = true;
 
   const fields = {
     firstName: {
@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
     consent.addEventListener("change", validateConsent);
   }
 
-  form.addEventListener("submit", async (event) => {
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const fieldResults = Object.keys(fields).map(validateField);
@@ -260,49 +260,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const originalButtonText = submitButton?.textContent;
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent = "Submitting...";
-    }
-
-    try {
-      const formData = new FormData(form);
-      const payload = Object.fromEntries(formData.entries());
-      payload["services[]"] = formData.getAll("services[]");
-      const response = await fetch(form.action, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(payload)
-      });
-
-      if (!response.ok) {
-        throw new Error("Application submission failed.");
-      }
-
-      if (statusMessage) {
-        statusMessage.textContent =
-          "Your application was submitted successfully. Thank you for contacting Trackflow.";
-        statusMessage.className =
-          "rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800";
-      }
-
-      form.reset();
-    } catch (error) {
-      if (statusMessage) {
-        statusMessage.textContent =
-          "We could not submit your application. Please try again later or contact our team.";
-        statusMessage.className =
-          "rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800";
-      }
-    } finally {
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-      }
+    if (statusMessage) {
+      statusMessage.textContent =
+        "Success! Your application passed validation. This is a demo; no data has been sent.";
+      statusMessage.className =
+        "rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800";
     }
   });
 });
