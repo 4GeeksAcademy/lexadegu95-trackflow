@@ -1,0 +1,59 @@
+Purpose
+
+This folder contains evaluation standards for the Trackflow logistics website. It helps the AI agent verify that the website is accessible, responsive, functional, secure, and maintainable.
+
+Website Scope
+
+Trackflow provides e-commerce logistics services in the United States and Spain, including:
+
+Warehouse management
+
+Last-mile delivery
+
+Returns management
+
+Customized logistics proposals through a contact form
+
+Evaluation Categories
+
+Accessibility: Semantic HTML, keyboard navigation, labels, contrast, and screen-reader support.
+
+Responsiveness: Layout behavior on mobile, tablet, laptop, and desktop screens.
+
+Form Validation: Required fields, valid email addresses, helpful error messages, and safe submission handling.
+
+Code Quality: HTML structure, CSS organization, JavaScript reliability, maintainability, and security.
+
+How the Agent Should Evaluate
+
+Read the website source code before making changes.
+
+Identify the relevant pages, forms, fields, styles, and JavaScript handlers.
+
+Execute the test cases in test-cases.md.
+
+Review every applicable item in website-checklist.md.
+
+Record each result as PASS, FAIL, BLOCKED, or NOT APPLICABLE.
+
+Include evidence for failures, such as the affected file, line number when available, and steps to reproduce.
+
+Fix issues only when authorized, then rerun the affected tests.
+
+Never report a test as passed unless it has actually been verified.
+
+Evaluation Status Definitions
+
+PASS: The expected behavior has been verified.
+
+FAIL: The website does not meet the requirement.
+
+BLOCKED: The test cannot be completed because a dependency or environment is unavailable.
+
+NOT APPLICABLE: The requirement does not apply to the implementation.
+
+Completion Criteria
+
+The website is ready for review when all applicable critical tests pass, no unresolved critical accessibility or security issues remain, and any known limitations are documented.
+
+A contact form must not be considered production-ready merely because it displays a success message. Verify that the submission reaches a real, authorized backend or form service and that errors are handled correctly.
