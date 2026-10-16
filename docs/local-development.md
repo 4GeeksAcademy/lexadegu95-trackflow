@@ -2,7 +2,9 @@
 
 ## Requirements
 
-Use a Codespace or local environment with Node.js and npm installed (`npx` is included with npm). The repository's Codespaces devcontainer already forwards port `8000`.
+Use a Codespace or local environment with Node.js and npm installed (`npx` is included with npm). The repository's Codespaces devcontainer installs the Node.js LTS release and forwards port `8000`.
+
+For an existing Codespace, rebuild the container after pulling this change using **Codespaces: Rebuild Container** so the Node.js feature is installed.
 
 ## Start the static site
 
