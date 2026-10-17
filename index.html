@@ -454,6 +454,7 @@
         prospectForm.addEventListener('reset', () => {
             touchedFields.clear();
             formStatus.textContent = '';
+            formStatus.className = 'my-4 rounded-md px-4 py-3 font-semibold text-[#422a2c] empty:hidden';
             for (const { controls, error } of validationFields.values()) {
                 error.textContent = '';
                 for (const control of controls) {
