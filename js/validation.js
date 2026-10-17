@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const submitButton = form.querySelector('[type="submit"]');
   const statusMessage = document.getElementById("form-status");
+  const allowedMonthlyOrders = new Set([
+    "Under 500",
+    "500-2000",
+    "2001-10000",
+    "10001-50000",
+    "Over 50000",
+    "Not yet determined"
+  ]);
   form.noValidate = true;
 
   const fields = {
@@ -49,7 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
             : "";
         }
 
-        const digits = value.replace(/\D/g, "");
+        const normalizedValue = value.trim();
+        if (!/^\+?\d(?:[\d\s().-]*\d)?$/.test(normalizedValue)) {
+          return "Use digits, an optional leading +, and spaces, parentheses, dots, or hyphens only.";
+        }
+
+        const digits = normalizedValue.replace(/\D/g, "");
 
         if (digits.length < 10 || digits.length > 15) {
           return "Enter a phone number containing 10–15 digits.";
@@ -114,7 +127,9 @@ document.addEventListener("DOMContentLoaded", () => {
     monthlyOrders: {
       label: "Monthly orders",
       validate: (value) =>
-        value ? "" : "Please select your estimated monthly orders."
+        allowedMonthlyOrders.has(value)
+          ? ""
+          : "Please select one of the listed estimated monthly order ranges."
     },
 
     serviceStartDate: {
@@ -132,8 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
           return "Please describe your logistics requirements.";
         }
 
-        if (trimmedValue.length < input.minLength) {
+        if (trimmedValue && trimmedValue.length < input.minLength) {
           return `Please provide at least ${input.minLength} non-space characters describing your logistics requirements.`;
+        }
+
+        if (input.maxLength >= 0 && value.length > input.maxLength) {
+          return `Please keep your logistics requirements to ${input.maxLength} characters or fewer.`;
         }
 
         return "";
