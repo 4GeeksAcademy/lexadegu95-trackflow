@@ -106,7 +106,7 @@
         <!-- HERO SECTION -->
         <section class="relative isolate flex min-h-0 flex-col items-start justify-between gap-[35px] bg-[#422a2c] px-[5%] py-12 text-white sm:min-h-[580px] sm:gap-[50px] sm:px-[8%] sm:py-[68px] lg:flex-row lg:items-center 2xl:min-h-[620px]" id="home">
             <img class="absolute inset-0 -z-20 h-full w-full object-cover" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=960&amp;q=75" srcset="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=640&amp;q=75 640w, https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=960&amp;q=75 960w, https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1600&amp;q=75 1600w" sizes="100vw" alt="Warehouse aisles with organized inventory ready for fulfillment" width="1600" height="900" fetchpriority="high">
-            <div aria-hidden="true" class="absolute inset-0 -z-10 bg-[#3a1b23]/90 sm:bg-gradient-to-r sm:from-[#3a1b23]/95 sm:via-[#3a1b23]/80 sm:to-[#3a1b23]/25"></div>
+            <div aria-hidden="true" class="absolute inset-0 -z-10 bg-[#3a1b23]/90 sm:bg-gradient-to-r sm:from-[#3a1b23]/95 sm:via-[#3a1b23]/90 sm:to-[#3a1b23]/85"></div>
             <div class="relative z-0 max-w-[720px] animate-welcome motion-reduce:animate-none">
                 <span class="mb-[22px] inline-block rounded border border-[#e4bd68] bg-[#f9dce5] px-[14px] py-2 text-[.65rem] font-bold text-[#422a2c] sm:rotate-[-2deg] sm:text-[.75rem]">YOUR LOGISTICS PARTNER IN THE US &amp; SPAIN</span>
 
@@ -118,7 +118,7 @@
                 </p>
 
                 <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
-                    <a href="#prospect-form" class="inline-flex min-h-12 items-center justify-center rounded-md border border-[#a3223d] bg-[#a3223d] px-[26px] py-[14px] font-bold text-white shadow-[3px_3px_0_#e4bd68] transition-all hover:bg-[#82192f] hover:shadow-[1px_1px_0_#e4bd68] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]">Request information</a>
+                    <a href="#prospect-form" class="inline-flex min-h-12 items-center justify-center rounded-md border border-[#a3223d] bg-[#a3223d] px-[26px] py-[14px] font-bold text-white shadow-[3px_3px_0_#e4bd68] transition-all hover:bg-[#82192f] hover:shadow-[1px_1px_0_#e4bd68] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e4bd68]">Request information</a>
                 </div>
             </div>
         </section>
@@ -253,12 +253,12 @@
                     </div>
                     <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="phone">Phone</label>
-                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" pattern="\s*\+[1-9](?:[\s\(\)\.\-]*[0-9]){6,14}[\s\(\)\.\-]*" title="Start with + and your country code. Use 7-15 digits; spaces, parentheses, dots and hyphens are allowed." aria-describedby="phone-help" placeholder="+1 213 555 0147" required>
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] placeholder:text-[#705258] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" pattern="\s*\+[1-9](?:[\s\(\)\.\-]*[0-9]){6,14}[\s\(\)\.\-]*" title="Start with + and your country code. Use 7-15 digits; spaces, parentheses, dots and hyphens are allowed." aria-describedby="phone-help" placeholder="+1 213 555 0147" required>
                         <small class="text-sm text-[#705258]" id="phone-help">Include + and your country code. Examples: +12135550147, +1 (213) 555-0147, or +34 976 123 456.</small>
                     </div>
                     <div data-field class="flex min-w-0 flex-col gap-2">
                         <label class="text-sm font-semibold" for="website">Company website (optional)</label>
-                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="website" name="website" type="url" autocomplete="url" maxlength="2048" pattern="https?://.+" title="Enter a valid URL starting with http:// or https://." placeholder="https://yourcompany.com" aria-describedby="website-help">
+                        <input class="min-h-12 w-full rounded-md border border-[#98727c] bg-[#fffafb] px-3 py-3 text-[#422a2c] placeholder:text-[#705258] focus:border-[#a3223d] focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a3223d] focus-visible:ring-offset-2 aria-[invalid=true]:border-2 aria-[invalid=true]:border-[#b42318]" id="website" name="website" type="url" autocomplete="url" maxlength="2048" pattern="https?://.+" title="Enter a valid URL starting with http:// or https://." placeholder="https://yourcompany.com" aria-describedby="website-help">
                         <small class="text-sm text-[#705258]" id="website-help">Include the full URL, starting with https:// or http://.</small>
                     </div>
                     <div data-field class="flex min-w-0 flex-col gap-2">
