@@ -86,12 +86,12 @@
 </head>
 
 <body class="break-words bg-[#fff9fb] font-sans leading-[1.6] text-[#422a2c]">
-    <a class="absolute left-4 top-[-100px] z-10 bg-white p-3 focus:top-3" href="#main-content">Skip to content</a>
+    <a class="absolute left-4 top-[-100px] z-10 bg-white p-3 focus:top-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]" href="#main-content">Skip to content</a>
 
     <!-- NAVIGATION BAR -->
     <header>
         <nav class="flex flex-col items-center justify-between gap-[18px] border-b border-[#dcb68a] bg-[#fff9fb] px-[5%] py-[18px] md:flex-row md:gap-8 md:px-[8%]" aria-label="Main navigation">
-            <a href="#home" class="font-display text-[2rem] font-medium text-[#422a2c]">Track<span class="text-[#a3223d]">Flow</span></a>
+            <a href="#home" class="font-display text-[2rem] font-medium text-[#422a2c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]">Track<span class="text-[#a3223d]">Flow</span></a>
 
             <ul class="flex flex-wrap items-center justify-center gap-4 list-none md:flex-nowrap md:gap-8">
                 <li><a class="inline-flex min-h-11 items-center text-[.9rem] font-semibold text-[#422a2c] transition-colors hover:text-[#a3223d] hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d] md:text-[.95rem]" href="#home">Home</a></li>
@@ -102,7 +102,7 @@
         </nav>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
         <!-- HERO SECTION -->
         <section class="relative isolate flex min-h-0 flex-col items-start justify-between gap-[35px] bg-[#422a2c] px-[5%] py-12 text-white sm:min-h-[580px] sm:gap-[50px] sm:px-[8%] sm:py-[68px] lg:flex-row lg:items-center 2xl:min-h-[620px]" id="home">
             <img class="absolute inset-0 -z-20 h-full w-full object-cover" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=960&amp;q=75" srcset="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=640&amp;q=75 640w, https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=960&amp;q=75 960w, https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1600&amp;q=75 1600w" sizes="100vw" alt="Warehouse aisles with organized inventory ready for fulfillment" width="1600" height="900" fetchpriority="high">
@@ -295,23 +295,23 @@
                     </div>
                     <div class="col-span-full rounded-md border-l-4 border-[#a1762b] bg-[#fff3d8] p-4" id="volume-warning" hidden>
                         <p class="mb-3 text-[#422a2c]" id="volume-warning-message" role="alert">For volumes under 100 monthly shipments, our services might not be the most efficient solution. Are you sure you want to continue?</p>
-                        <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" id="volume-confirmation" name="low_volume_confirmed" type="checkbox" value="yes" aria-describedby="volume-warning-message">Yes, I want to continue</label>
+                        <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" id="volume-confirmation" name="low_volume_confirmed" type="checkbox" value="yes" aria-describedby="volume-warning-message">Yes, I want to continue</label>
                     </div>
                     <fieldset class="col-span-full min-w-0 border-0 p-0" aria-describedby="services-help">
                         <legend class="mb-3 font-semibold">Services of interest</legend>
                         <div class="flex flex-wrap gap-x-6 gap-y-3">
-                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="checkbox" name="services" value="warehouse">Warehousing</label>
-                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="checkbox" name="services" value="last_mile">Last mile</label>
-                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="checkbox" name="services" value="returns">Reverse logistics</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="checkbox" name="services" value="warehouse">Warehousing</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="checkbox" name="services" value="last_mile">Last mile</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="checkbox" name="services" value="returns">Reverse logistics</label>
                         </div>
                         <p class="mt-2 text-[.9rem] text-[#705258]" id="services-help">Select one or more services.</p>
                     </fieldset>
                     <fieldset class="col-span-full min-w-0 border-0 p-0">
                         <legend class="mb-3 font-semibold">Do you currently work with another 3PL?</legend>
                         <div class="flex flex-wrap gap-x-6 gap-y-3">
-                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="radio" name="current_3pl" value="Yes" required>Yes</label>
-                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="radio" name="current_3pl" value="No" required>No</label>
-                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="radio" name="current_3pl" value="Evaluating options" required>Evaluating options</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="radio" name="current_3pl" value="Yes" required>Yes</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="radio" name="current_3pl" value="No" required>No</label>
+                            <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" type="radio" name="current_3pl" value="Evaluating options" required>Evaluating options</label>
                         </div>
                     </fieldset>
                     <div class="col-span-full flex min-w-0 flex-col gap-2">
@@ -321,7 +321,7 @@
                         <small class="text-sm text-[#705258]" id="comments-counter" role="status" aria-live="polite" aria-atomic="true">0 / 500 characters</small>
                     </div>
                     <div class="col-span-full">
-                        <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d]" type="checkbox" name="consent" value="yes" required>I accept the privacy policy</label>
+                        <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a3223d]" type="checkbox" name="consent" value="yes" required>I accept the privacy policy</label>
                         <p class="mt-2 text-[.9rem] text-[#705258]">Use business contact details only. Do not include customer records or sensitive product information.</p>
                     </div>
                     <div class="col-span-full flex flex-wrap items-center gap-4">
@@ -335,14 +335,14 @@
                     <p class="text-[#705258]">We have received your request. Our commercial team will review your information and contact you within the next 24-48 hours to schedule a call and learn about your logistics needs in detail.</p>
                     <p class="text-[#705258]">If you have any urgent inquiry, write to us directly at <a class="underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]" href="mailto:comercial@trackflow.com">comercial@trackflow.com</a></p>
                 </div>
-                <noscript><p class="mt-2 text-[.9rem] text-[#705258]">This simulated submission requires JavaScript. For enquiries, email <a class="underline underline-offset-4" href="mailto:comercial@trackflow.com">comercial@trackflow.com</a>.</p></noscript>
+                <noscript><p class="mt-2 text-[.9rem] text-[#705258]">This simulated submission requires JavaScript. For enquiries, email <a class="underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a3223d]" href="mailto:comercial@trackflow.com">comercial@trackflow.com</a>.</p></noscript>
             </div>
         </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="flex flex-col items-center justify-between gap-5 border-t-[3px] border-[#e4bd68] bg-[#422a2c] px-[5%] py-6 text-center text-[.9rem] text-[#f9dce5] sm:flex-row sm:px-[8%] sm:py-7 sm:text-left">
-        <a href="#home" class="font-display text-[2rem] font-medium text-[#f9dce5]">Track<span class="text-[#e4bd68]">Flow</span></a>
+        <a href="#home" class="font-display text-[2rem] font-medium text-[#f9dce5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e4bd68]">Track<span class="text-[#e4bd68]">Flow</span></a>
 
         <p>&copy; 2025 TrackFlow. All rights reserved.</p>
         <a class="inline-flex min-h-11 items-center underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e4bd68]" href="https://www.linkedin.com/">LinkedIn</a>
