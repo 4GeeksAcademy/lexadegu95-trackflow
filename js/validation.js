@@ -143,6 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
       error.className =
         "mt-2 rounded border-l-4 border-red-700 bg-red-50 px-3 py-2 text-sm leading-6 text-red-800";
       error.setAttribute("aria-live", "polite");
+      error.setAttribute("aria-atomic", "true");
       error.hidden = true;
       input.insertAdjacentElement("afterend", error);
     }
@@ -176,8 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
     input.setAttribute("aria-invalid", String(Boolean(finalMessage)));
 
     if (error) {
-      error.textContent = finalMessage;
-      error.hidden = !finalMessage;
+      if (finalMessage) {
+        error.hidden = false;
+        if (error.textContent !== finalMessage) error.textContent = finalMessage;
+      } else {
+        error.hidden = true;
+        if (error.textContent) error.textContent = "";
+      }
     }
 
     return !finalMessage;
@@ -210,10 +216,16 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     if (serviceError) {
-      serviceError.textContent = valid
+      const message = valid
         ? ""
         : "Please select at least one logistics service.";
-      serviceError.hidden = valid;
+      if (message) {
+        serviceError.hidden = false;
+        if (serviceError.textContent !== message) serviceError.textContent = message;
+      } else {
+        serviceError.hidden = true;
+        if (serviceError.textContent) serviceError.textContent = "";
+      }
     }
 
     services.forEach((service) => {
@@ -239,10 +251,16 @@ document.addEventListener("DOMContentLoaded", () => {
     consent.setAttribute("aria-invalid", String(!valid));
 
     if (consentError) {
-      consentError.textContent = valid
+      const message = valid
         ? ""
         : "You must agree to the privacy policy before submitting.";
-      consentError.hidden = valid;
+      if (message) {
+        consentError.hidden = false;
+        if (consentError.textContent !== message) consentError.textContent = message;
+      } else {
+        consentError.hidden = true;
+        if (consentError.textContent) consentError.textContent = "";
+      }
     }
 
     return valid;

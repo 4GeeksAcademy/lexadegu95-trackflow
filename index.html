@@ -296,7 +296,7 @@
                         </select>
                     </div>
                     <div class="col-span-full rounded-md border-l-4 border-[#a1762b] bg-[#fff3d8] p-4" id="volume-warning" hidden>
-                        <p class="mb-3 text-[#422a2c]" id="volume-warning-message" role="alert">For volumes under 100 monthly shipments, our services might not be the most efficient solution. Are you sure you want to continue?</p>
+                        <p class="mb-3 text-[#422a2c]" id="volume-warning-message" role="alert" aria-atomic="true">For volumes under 100 monthly shipments, our services might not be the most efficient solution. Are you sure you want to continue?</p>
                         <label class="inline-flex min-h-11 cursor-pointer items-center gap-2.5 font-normal"><input class="h-5 w-5 shrink-0 accent-[#a3223d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a3223d] aria-[invalid=true]:outline aria-[invalid=true]:outline-2 aria-[invalid=true]:outline-[#b42318]" id="volume-confirmation" name="low_volume_confirmed" type="checkbox" value="yes" aria-describedby="volume-warning-message">Yes, I want to continue</label>
                     </div>
                     <fieldset class="col-span-full min-w-0 border-0 p-0" aria-describedby="services-help">
@@ -405,6 +405,7 @@
             error.id = `${name}-error`;
             error.className = 'mt-2 rounded border-l-4 border-[#b42318] bg-[#fef3f2] px-3 py-2 text-sm leading-6 text-[#b42318]';
             error.setAttribute('aria-live', 'polite');
+            error.setAttribute('aria-atomic', 'true');
             container.append(error);
             validationFields.set(name, { controls, error });
             for (const control of controls) {
@@ -436,7 +437,8 @@
             }
             const message = typeof validationMessages[name] === 'function' ? validationMessages[name]() : validationMessages[name];
             controls[0].setCustomValidity(valid ? '' : message);
-            error.textContent = showError && !valid ? message : '';
+            const errorMessage = showError && !valid ? message : '';
+            if (error.textContent !== errorMessage) error.textContent = errorMessage;
             for (const control of controls) {
                 if (showError && !valid) control.setAttribute('aria-invalid', 'true');
                 else control.removeAttribute('aria-invalid');
