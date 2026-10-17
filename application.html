@@ -330,12 +330,12 @@
                     </fieldset>
 
                     <!-- Service Requirements -->
-                    <fieldset class="space-y-5" aria-describedby="services-help services-error">
+                    <fieldset class="space-y-5">
                         <legend class="mb-2 text-lg font-bold text-slate-900">
                             3. Logistics Requirements
                         </legend>
 
-                        <p class="text-sm text-slate-600">
+                        <p id="services-help" class="text-sm text-slate-600">
                             Select every service your business needs.
                         </p>
 
@@ -346,6 +346,7 @@
                                     type="checkbox"
                                     name="services[]"
                                     value="Warehouse management"
+                                    aria-describedby="services-help services-error"
                                     class="mt-1 accent-blue-700"
                                 >
                                 <span>
@@ -361,6 +362,7 @@
                                     type="checkbox"
                                     name="services[]"
                                     value="Last-mile delivery"
+                                    aria-describedby="services-help services-error"
                                     class="mt-1 accent-blue-700"
                                 >
                                 <span>
@@ -376,6 +378,7 @@
                                     type="checkbox"
                                     name="services[]"
                                     value="Returns management"
+                                    aria-describedby="services-help services-error"
                                     class="mt-1 accent-blue-700"
                                 >
                                 <span>
@@ -391,6 +394,7 @@
                                     type="checkbox"
                                     name="services[]"
                                     value="Custom logistics"
+                                    aria-describedby="services-help services-error"
                                     class="mt-1 accent-blue-700"
                                 >
                                 <span>
@@ -402,7 +406,7 @@
                             </label>
 
                         </div>
-                        <p id="services-error" class="mt-2 rounded border-l-4 border-red-700 bg-red-50 px-3 py-2 text-sm leading-6 text-red-800" hidden></p>
+                        <p id="services-error" class="mt-2 rounded border-l-4 border-red-700 bg-red-50 px-3 py-2 text-sm leading-6 text-red-800" aria-live="polite" hidden></p>
 
                         <div>
                             <label
@@ -481,7 +485,7 @@
                             </span>
                         </label>
 
-                        <p id="privacyConsent-error" class="mt-2 rounded border-l-4 border-red-700 bg-red-50 px-3 py-2 text-sm leading-6 text-red-800" hidden></p>
+                        <p id="privacyConsent-error" class="mt-2 rounded border-l-4 border-red-700 bg-red-50 px-3 py-2 text-sm leading-6 text-red-800" aria-live="polite" hidden></p>
 
                         <p class="text-xs leading-5 text-slate-500">
                             Ensure your published privacy policy accurately
