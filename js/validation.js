@@ -126,8 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
     requirements: {
       label: "Logistics requirements",
       validate: (value, input) => {
-        if (input.required && !value.trim()) {
+        const trimmedValue = value.trim();
+
+        if (input.required && !trimmedValue) {
           return "Please describe your logistics requirements.";
+        }
+
+        if (trimmedValue.length < input.minLength) {
+          return `Please provide at least ${input.minLength} non-space characters describing your logistics requirements.`;
         }
 
         return "";
@@ -176,7 +182,23 @@ document.addEventListener("DOMContentLoaded", () => {
         ? `Please enter ${rule.label.toLowerCase()}.`
         : input.validity.typeMismatch
           ? `Please enter a valid ${rule.label.toLowerCase()}.`
-          : input.validationMessage;
+          : input.validity.tooShort
+            ? `${rule.label} must contain at least ${input.minLength} characters.`
+            : input.validity.tooLong
+              ? `${rule.label} must contain no more than ${input.maxLength} characters.`
+              : input.validity.patternMismatch
+                ? input.title || `Enter a valid ${rule.label.toLowerCase()}.`
+                : input.validity.badInput
+                  ? `Enter a valid ${rule.label.toLowerCase()}.`
+                  : input.validity.rangeUnderflow
+                    ? `${rule.label} must be on or after ${input.min}.`
+                    : input.validity.rangeOverflow
+                      ? `${rule.label} must be on or before ${input.max}.`
+                      : input.validity.stepMismatch
+                        ? `Enter a valid ${rule.label.toLowerCase()}.`
+                        : input.validity.customError && input.validationMessage
+                          ? input.validationMessage
+                          : `Enter a valid ${rule.label.toLowerCase()} value.`;
 
     const finalMessage = message || nativeMessage;
 
