@@ -132,12 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
           : "Please select one of the listed estimated monthly order ranges."
     },
 
-    serviceStartDate: {
-      label: "Requested service start date",
-      validate: (value, input) =>
-        input.validity.valid ? "" : "Enter a valid requested service start date."
-    },
-
     requirements: {
       label: "Logistics requirements",
       validate: (value, input) => {
